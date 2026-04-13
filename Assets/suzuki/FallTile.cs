@@ -29,9 +29,10 @@ public class FallTile : MonoBehaviour
 
             timer -= Time.deltaTime;
 
+            //0秒になったら
             if (timer < 0)
             {
-
+                //RigidBody追加
                 rb.useGravity = true;
                 rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.None;
 
@@ -46,7 +47,7 @@ public class FallTile : MonoBehaviour
 
         }
 
-        Debug.Log(timer);
+        //Debug.Log(timer);
 
 
     }
