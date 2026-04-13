@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     //移動方向
     Vector3 moveDirection;
 
+    RaycastHit hit;
+
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -63,9 +65,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float rayDistance = playerHeight * 0.5f + 0.2f;
+        Vector3 boxHalfExtents = new Vector3(1.8f, 0.1f, 1.8f);
+
+        grounded = Physics.BoxCast(
+            transform.position, 
+            boxHalfExtents, 
+            Vector3.down, 
+            out hit, 
+            transform.rotation, 
+            rayDistance);
 
         //Rayを下に伸ばして地面かどうか判断する
-        grounded = Physics.Raycast(transform.position, Vector3.down, rayDistance);
+        //grounded = Physics.Raycast(transform.position, Vector3.down, rayDistance);
 
         //入力取得
         MyInput();
@@ -85,7 +96,19 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.drag = 0;
 
+        //Debug.DrawRay(transform.position, Vector3.down * rayDistance, Color.red);
+
         Debug.DrawRay(transform.position, Vector3.down * rayDistance, Color.red);
+
+        //Vector3 boxStart = transform.position;
+
+        Vector3 boxEnd = transform.position + Vector3.down * rayDistance;
+
+        //DrawBox(boxStart, boxHalfExtents, Color.green);
+
+        DrawBox(boxEnd, boxHalfExtents, Color.blue);
+
+
     }
 
     private void FixedUpdate()
@@ -182,5 +205,40 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    void DrawBox(Vector3 center, Vector3 halfExtents, Color color)
+    {
+        Vector3[] points = new Vector3[8];
+
+        // 上面
+        points[0] = center + new Vector3(-halfExtents.x, halfExtents.y, -halfExtents.z);
+        points[1] = center + new Vector3(halfExtents.x, halfExtents.y, -halfExtents.z);
+        points[2] = center + new Vector3(halfExtents.x, halfExtents.y, halfExtents.z);
+        points[3] = center + new Vector3(-halfExtents.x, halfExtents.y, halfExtents.z);
+
+        // 下面
+        points[4] = center + new Vector3(-halfExtents.x, -halfExtents.y, -halfExtents.z);
+        points[5] = center + new Vector3(halfExtents.x, -halfExtents.y, -halfExtents.z);
+        points[6] = center + new Vector3(halfExtents.x, -halfExtents.y, halfExtents.z);
+        points[7] = center + new Vector3(-halfExtents.x, -halfExtents.y, halfExtents.z);
+
+        // 上面
+        Debug.DrawLine(points[0], points[1], color);
+        Debug.DrawLine(points[1], points[2], color);
+        Debug.DrawLine(points[2], points[3], color);
+        Debug.DrawLine(points[3], points[0], color);
+
+        // 下面
+        Debug.DrawLine(points[4], points[5], color);
+        Debug.DrawLine(points[5], points[6], color);
+        Debug.DrawLine(points[6], points[7], color);
+        Debug.DrawLine(points[7], points[4], color);
+
+        // 縦
+        Debug.DrawLine(points[0], points[4], color);
+        Debug.DrawLine(points[1], points[5], color);
+        Debug.DrawLine(points[2], points[6], color);
+        Debug.DrawLine(points[3], points[7], color);
     }
 }
