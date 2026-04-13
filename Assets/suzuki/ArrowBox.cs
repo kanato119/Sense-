@@ -19,6 +19,7 @@ public class ArrowBox : MonoBehaviour
 
     [SerializeField] Vector3 Direction;
 
+   
 
     // Start is called before the first frame update
     void Start()
@@ -59,20 +60,6 @@ public class ArrowBox : MonoBehaviour
 
 
      }
-    private void OnTriggerEnter(Collider other)
-    {
-
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-
-
-           rb.AddForce(Direction * Speed, ForceMode.Impulse);
-
-
-
-        }
+   
     }
-}
+
