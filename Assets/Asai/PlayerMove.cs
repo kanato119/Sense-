@@ -62,8 +62,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float rayDistance = playerHeight * 0.5f + 0.2f;
+
         //Rayを下に伸ばして地面かどうか判断する
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
+        grounded = Physics.Raycast(transform.position, Vector3.down, rayDistance);
 
         //入力取得
         MyInput();
@@ -82,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        Debug.DrawRay(transform.position, Vector3.down * rayDistance, Color.red);
     }
 
     private void FixedUpdate()
