@@ -11,7 +11,8 @@ public class PouseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+
     }
 
     public void PauseGame()
@@ -20,6 +21,7 @@ public class PouseManager : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         pauseMenuUI.SetActive(true);
+
 
     }
 
@@ -44,6 +46,7 @@ public class PouseManager : MonoBehaviour
 
                 Resumegame();
 
+
             }
             else
             {
@@ -51,6 +54,16 @@ public class PouseManager : MonoBehaviour
                 PauseGame();
 
             }
+
+        }
+
+        if (isPaused&&Input.GetKeyDown(KeyCode.Space))
+        {
+
+
+            ChengeSceneB changescene = GetComponent<ChengeSceneB>();
+
+            changescene.ChengeScene2();
 
         }
 
