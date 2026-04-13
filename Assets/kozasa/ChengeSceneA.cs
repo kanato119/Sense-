@@ -17,7 +17,7 @@ public class ChengeSceneA : MonoBehaviour
         
     }
 
-    public void ChengeScene()
+    public void ChengeScene1()
     {
         // 読み込むシーン
         SceneManager.LoadScene("GameScene");
