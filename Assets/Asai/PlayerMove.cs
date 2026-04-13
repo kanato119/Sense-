@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("ダッシュスピード")]
     [SerializeField] float runSpeed;
 
+    float currentSpeed;
+
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
@@ -53,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        currentSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -63,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
 
         //入力取得
         MyInput();
+
+        if (Input.GetKey(KeyCode.LeftShift))
+            currentSpeed = runSpeed;
+
+        else
+            currentSpeed = moveSpeed;
 
         //スピードコントロール
         SpeedControl();
@@ -85,10 +95,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //キーを離したら空中にいる時間を短くする
-        else if(rb. velocity.y > 0 &&!Input.GetKey(jumpKey))
+        else if(rb. velocity.y > 0 &&!Input.GetKeyDown(jumpKey))
         {
+            //rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f,rb.velocity.z); 
+
             rb.AddForce(Vector3.up * Physics.gravity.y * (fallMutipler - 1), ForceMode.Acceleration);
         }
+        
     }
 
     //キー入力の取得
@@ -106,10 +119,6 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
 
-        if(Input.GetKey(KeyCode.LeftShift))
-        {
-            rb.AddForce(moveDirection.normalized * runSpeed * 10f, ForceMode.Force);
-        }
     }
 
     private void MovePlayer()
@@ -119,11 +128,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(grounded)
         //力を入れて進む
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
 
         else if(!grounded)
             //力を入れて進む
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * currentSpeed * 10f * airMultiplier, ForceMode.Force);
 
         /*
         //地面に触れいる時だけ移動できる
@@ -150,9 +159,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         //最大速度を超えそうになったら制限する
-        if (flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > currentSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * currentSpeed;
 
             //YはそのままにしてXZだけ制限する
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
@@ -163,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     private void ResetJump()
