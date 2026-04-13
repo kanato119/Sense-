@@ -60,7 +60,6 @@ public class PouseManager : MonoBehaviour
         if (isPaused&&Input.GetKeyDown(KeyCode.Space))
         {
 
-
             ChengeSceneB changescene = GetComponent<ChengeSceneB>();
 
             changescene.ChengeScene2();
