@@ -5,17 +5,25 @@ using UnityEngine;
 
 public class JumpBoard : MonoBehaviour
 {
-    [SerializeField] private float jumpBoardFoce = 30.0f;
+    [SerializeField] private float jumpBoardFoceX = 0.0f;
+    [SerializeField] private float jumpBoardFoceY = 30.0f;
+    [SerializeField] private float jumpBoardFoceZ = 0.0f;
+
+
 
     private void OnTriggerEnter(Collider other)
     {
 
+        Rigidbody rb =  other.GetComponent<Rigidbody>();
+
+
         if (other.gameObject.CompareTag("Player"))
         {
+         
+            
+            rb.velocity = new Vector3(jumpBoardFoceX, jumpBoardFoceY, jumpBoardFoceZ);
+            
 
-
-
-            other.gameObject.GetComponent<Rigidbody>().AddForce(0, jumpBoardFoce, 0, ForceMode.Impulse);
 
         }
     }
