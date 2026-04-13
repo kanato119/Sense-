@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            rb.AddForce(moveDirection.normalized * runSpeed * 15f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * runSpeed * 10f, ForceMode.Force);
         }
     }
 
