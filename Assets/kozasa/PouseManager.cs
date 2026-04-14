@@ -6,9 +6,10 @@ public class PouseManager : MonoBehaviour
 {
 
     [SerializeField] GameObject pauseMenuUI;
+    [SerializeField] private MonoBehaviour camera;
 
-    [SerializeField] GameObject CameraObject;
-   private bool isPaused = false;
+    // [SerializeField] GameObject CameraObject;
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,9 @@ public class PouseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        CameraObject.SetActive(false);
+        // CameraObject.SetActive(false);
+
+        camera.enabled = false;
     }
 
    public void Resumegame()
@@ -40,7 +43,9 @@ public class PouseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        CameraObject.SetActive(true);
+        //CameraObject.SetActive(true);
+
+        camera.enabled = true;
 
     }
 
