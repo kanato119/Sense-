@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - OutWarpPoint
+  - ArrowTag
   layers:
   - Default
   - TransparentFX

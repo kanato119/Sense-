@@ -1,42 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditorInternal.VR;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 public class BuletPrefab : MonoBehaviour
 {
 
-    [SerializeField] float Speed;
-    [SerializeField] Vector3 Direction;
 
-    [SerializeField] float KnockBack;
+    [SerializeField]float KnockBackForce;
 
-
-    
-
- 
 
 
     private void OnTriggerEnter(Collider other)
     {
-
-        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (other.gameObject.CompareTag("Player")) { 
         
 
-        if (other.gameObject.CompareTag("Player"))
-        {
+            Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            Debug.Log(Direction * (Speed * KnockBack));
-
-            Vector3 KnockBuckDirection=(transform.position-other.transform.position).normalized;
+        rb.velocity = Vector3.zero;
 
 
-            rb.AddForce(KnockBuckDirection * Speed, ForceMode.Impulse);
+        Vector3 dir=( other.transform.position-transform.position ).normalized;
 
-
-
-
+        rb.AddForce(dir * KnockBackForce, ForceMode.VelocityChange);
 
         }
+        else if(!other.gameObject.CompareTag("ArrowTag"))
+        {
+
+            Destroy(this.gameObject);
+
+        }
+        
     }
 }
