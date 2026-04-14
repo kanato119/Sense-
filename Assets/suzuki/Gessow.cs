@@ -32,15 +32,15 @@ public class Gessow : MonoBehaviour
         if (OnGimik)
         {
 
-            gameObject.SetActive(true);
 
+            gameObject.GetComponent<Renderer>().enabled = true;
 
             huga -= Time.deltaTime;
 
         }
         else {
 
-            gameObject.SetActive(false);
+            gameObject.GetComponent<Renderer>().enabled = false;
         }
 
         if (huga >= 0)
