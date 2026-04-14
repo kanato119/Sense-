@@ -1,67 +1,119 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SeeSawControl : MonoBehaviour
+public class rotateBlock : MonoBehaviour
 {
 
+    [SerializeField] public float maxAngle = 45.0f;
+    private Rigidbody _rigidBody;
 
-    [SerializeField] Transform SeeSaw;
-
-
-    [SerializeField] float MaxX = 40;
-    [SerializeField] float MinX = -40;
-
-    [SerializeField] float MaxY = 40;
-    [SerializeField] float MinY = -40;
-
-    [SerializeField] float MaxZ = 40;
-    [SerializeField] float MinZ = -40;
+    [SerializeField] bool SeeSowX;
+    [SerializeField] bool SeeSowY;
+    [SerializeField] bool SeeSowZ;
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        SeeSaw = GetComponent<Transform>();
+        _rigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        ////Ⅹの回転
-        //if (SeeSaw.rotation.z < MinX)SeeSaw.Rotate(MinX, 0, 0);
-        //if (SeeSaw.rotation.z > MaxX) SeeSaw.Rotate(MaxX, 0, 0);
 
-        ////Yの回転
-        //if (SeeSaw.rotation.z < MinY) SeeSaw.Rotate(0, MinY, 0);
-        //if (SeeSaw.rotation.z > MaxY) SeeSaw.Rotate(0, MaxY, 0);
-
-        //Zの回転
-        //if (SeeSaw.rotation.z < MinZ)SeeSaw.Rotate(0, 0, MinZ);
-        //if (SeeSaw.rotation.z > MaxZ)SeeSaw.Rotate(0, 0, MaxZ);
-
-        Debug.Log(SeeSaw.localEulerAngles.z);
-
-        float deg = SeeSaw.localEulerAngles.z;
-
-        if(deg < 0.0f) deg += 360.0f;
+        // Z軸の角度を取得
+        float x = transform.localEulerAngles.x;
+        float y = transform.localEulerAngles.y;
+        float z = transform.localEulerAngles.z;
 
 
-        //if ( /*Z軸の角度が-45度より小さくなったら*/ SeeSaw.localEulerAngles.z <= MinZ)
-        if( deg <180.0f && 360.0f - MinZ < deg  )
+
+        if (SeeSowX)
         {
-            // Z軸の角度を-45度に設定
 
-            SeeSaw.eulerAngles = new Vector3(0, 0, MinZ);
-            
+            // 角度を正規化 -180.0～180.0の範囲内に収まるように
+            if (x > 180f) x -= 360f;
+
+            // 現在の角度をでグリー角度で取得
+            Vector3 current = transform.localEulerAngles;
+
+            // 角度を比較
+            if (x > maxAngle)
+            {
+
+                // 角度を固定
+                _rigidBody.MoveRotation(Quaternion.Euler(maxAngle, current.y, current.z));
+
+                // RigidBodyコンポーネントの回転速度を0に固定
+                _rigidBody.angularVelocity = Vector3.zero;
+            }
+            else if (x < -maxAngle)
+            {
+
+                // 角度を固定
+                _rigidBody.MoveRotation(Quaternion.Euler(-maxAngle, current.y, current.z));
+
+                // RigidBodyコンポーネントの回転速度を0に固定
+                _rigidBody.angularVelocity = Vector3.zero;
+            }
         }
-        if ( /*Z軸の角度が-45度より小さくなったら*/ SeeSaw.localEulerAngles.z >= MaxZ)
+
+        if (SeeSowY)
         {
-            // Z軸の角度を-45度に設定
 
-            //SeeSaw.eulerAngles = new Vector3(0, 0, MaxZ);
+            // 角度を正規化 -180.0～180.0の範囲内に収まるように
+            if (y > 180f) y -= 360f;
 
+            // 現在の角度をでグリー角度で取得
+            Vector3 current = transform.localEulerAngles;
+
+            // 角度を比較
+            if (y > maxAngle)
+            {
+
+                // 角度を固定
+                _rigidBody.MoveRotation(Quaternion.Euler(current.x, maxAngle, current.z));
+
+                // RigidBodyコンポーネントの回転速度を0に固定
+                _rigidBody.angularVelocity = Vector3.zero;
+            }
+            else if (y < -maxAngle)
+            {
+
+                // 角度を固定
+                _rigidBody.MoveRotation(Quaternion.Euler(current.x, -maxAngle, current.z));
+
+                // RigidBodyコンポーネントの回転速度を0に固定
+                _rigidBody.angularVelocity = Vector3.zero;
+            }
         }
 
+        if (SeeSowZ)
+        {
+
+            // 角度を正規化 -180.0～180.0の範囲内に収まるように
+            if (z > 180f) z -= 360f;
+
+            // 現在の角度をでグリー角度で取得
+            Vector3 current = transform.localEulerAngles;
+
+            // 角度を比較
+            if (z > maxAngle)
+            {
+
+                // 角度を固定
+                _rigidBody.MoveRotation(Quaternion.Euler(current.x, current.y, maxAngle));
+
+                // RigidBodyコンポーネントの回転速度を0に固定
+                _rigidBody.angularVelocity = Vector3.zero;
+            }
+            else if (z < -maxAngle)
+            {
+
+                // 角度を固定
+                _rigidBody.MoveRotation(Quaternion.Euler(current.x, current.y, -maxAngle));
+
+                // RigidBodyコンポーネントの回転速度を0に固定
+                _rigidBody.angularVelocity = Vector3.zero;
+            }
+        }
     }
 }
