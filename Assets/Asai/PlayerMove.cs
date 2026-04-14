@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float rayDistance = playerHeight * 0.5f + 0.2f;
-        Vector3 boxHalfExtents = new Vector3(1.8f, 0.1f, 1.8f);
+        Vector3 boxHalfExtents = new Vector3(1f, 0.1f, 1f);
 
         grounded = Physics.BoxCast(
             transform.position, 
