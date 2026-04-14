@@ -32,6 +32,7 @@ public class Clear : MonoBehaviour
     {
 
         Debug.Log("ゴール");
+        Time.timeScale = 0f;
 
     }
 }
