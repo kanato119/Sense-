@@ -29,27 +29,27 @@ public class Gessow : MonoBehaviour
         }
 
 
-        if (OnGimik)
-        {
+        //if (OnGimik)
+        //{
 
 
-            gameObject.GetComponent<Renderer>().enabled = true;
+        //    gameObject.GetComponent<Renderer>().enabled = true;
 
-            huga -= Time.deltaTime;
+        //    huga -= Time.deltaTime;
 
-        }
-        else {
+        //}
+        //else {
 
-            gameObject.GetComponent<Renderer>().enabled = false;
-        }
+        //    gameObject.GetComponent<Renderer>().enabled = false;
+        //}
 
-        if (huga >= 0)
-        {
+        //if (huga >= 0)
+        //{
 
-            OnGimik=false;
+        //    OnGimik=false;
 
-            huga = 2;
-        }
+        //    huga = 2;
+        //}
 
 
     }
