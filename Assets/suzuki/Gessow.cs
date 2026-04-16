@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,52 +6,24 @@ using UnityEngine;
 public class Gessow : MonoBehaviour
 {
 
-    [SerializeField] bool OnGimik;
+   
 
-    [SerializeField] float huga=2;
+    [SerializeField] public Image Sumi;
+
     // Start is called before the first frame update
-    void Start()
+   
+    private void OnCollisionEnter(Collision collision)
     {
-        OnGimik = false;
+
+      //  Sumi.Equals = true;
+
+        Invoke("OffImag", 2.0f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OffImg()
     {
-        transform.position = transform.parent.position;
-        transform.rotation = transform.parent.rotation;
-        
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            OnGimik = true;
-
-        }
 
 
-        if (OnGimik)
-        {
+    } 
 
-
-            gameObject.GetComponent<Renderer>().enabled = true;
-
-            huga -= Time.deltaTime;
-
-        }
-        else {
-
-            gameObject.GetComponent<Renderer>().enabled = false;
-        }
-
-        if (huga >= 0)
-        {
-
-            OnGimik=false;
-
-            huga = 2;
-        }
-
-
-    }
 }

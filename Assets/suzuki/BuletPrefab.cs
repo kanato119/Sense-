@@ -9,31 +9,32 @@ public class BuletPrefab : MonoBehaviour
 {
 
 
-    [SerializeField]float KnockBackForce;
-
-
+    [SerializeField] float KnockBackForce;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) { 
-        
-
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-
-        rb.velocity = Vector3.zero;
-
-
-        Vector3 dir=( other.transform.position-transform.position ).normalized;
-
-        rb.AddForce(dir * KnockBackForce, ForceMode.VelocityChange);
-
-        }
-        else if(!other.gameObject.CompareTag("ArrowTag"))
+        if (other.CompareTag("Player"))
         {
+            Rigidbody rb = other.GetComponentInParent<Rigidbody>();
 
-            Destroy(this.gameObject);
+            if (rb != null)
+            {
+                Vector3 dir = rb.transform.position - transform.position;
+                dir.y = 0;
+                dir = dir.normalized;
+
+                Vector3 force = dir * KnockBackForce;
+                force.y = 5f;
+
+                rb.AddForce(force, ForceMode.Impulse);
+                Destroy(gameObject);
+                
+            }
 
         }
-        
+        else if (!other.CompareTag("ArrowTag"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

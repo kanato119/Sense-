@@ -20,7 +20,7 @@ public class ChengeSceneA : MonoBehaviour
     public void ChengeScene1()
     {
         // 読み込むシーン
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("reisyou");
         Debug.Log("ゲームスタート");
 
     }
