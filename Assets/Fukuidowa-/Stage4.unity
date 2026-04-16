@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4322189212288559708, guid: 9b78e6864762601479ca47b071193a6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.69
+      value: -2.21
       objectReference: {fileID: 0}
     - target: {fileID: 4322189212288559708, guid: 9b78e6864762601479ca47b071193a6e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -331,7 +331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4322189212288559708, guid: 9b78e6864762601479ca47b071193a6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8
+      value: 7.68
       objectReference: {fileID: 0}
     - target: {fileID: 4978449950999552835, guid: 9b78e6864762601479ca47b071193a6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f7a1da373617943ad4335e03822240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1000
+  timer: 10
 --- !u!54 &1449230578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 10
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1449230579
 BoxCollider:
