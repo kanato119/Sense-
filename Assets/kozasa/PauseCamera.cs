@@ -16,9 +16,9 @@ public class PauseCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // カメラをポーズを押したときの座標で固定
         Vector3 pos = targetCamera.transform.position;
-        Debug.Log(pos);
+       // Debug.Log(pos);
 
     }
 }
