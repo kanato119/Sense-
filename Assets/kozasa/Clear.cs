@@ -31,6 +31,10 @@ public class Clear : MonoBehaviour
    private void Goal()
     {
 
+
+        // カーソルの非表示
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("ゴール");
         Time.timeScale = 0f;
 
