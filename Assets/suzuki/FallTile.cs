@@ -40,7 +40,7 @@ public class FallTile : MonoBehaviour
             }
             else { 
             
-                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+                rb.constraints = RigidbodyConstraints.FreezeRotation ;
             
             }
           
