@@ -83,5 +83,7 @@ public class PouseManager : MonoBehaviour
 
         }
 
+        Debug.Log(Time.timeScale);
+
     }
 }
