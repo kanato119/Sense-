@@ -20,7 +20,7 @@ public class PouseManager : MonoBehaviour
 
     public void PauseGame()
     {
-
+        // パネルを表示させてゲームを止める
         Time.timeScale = 0f;
         isPaused = true;
         pauseMenuUI.SetActive(true);
@@ -35,7 +35,7 @@ public class PouseManager : MonoBehaviour
 
    public void Resumegame()
     {
-
+        // パネルを非表示にさせてゲームを動かす
         Time.timeScale = 1.0f;
         isPaused = false;
         pauseMenuUI.SetActive(false);
@@ -52,10 +52,10 @@ public class PouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // ESCキーを押したらポーズ
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
+            // すでにポーズだったら
             if (isPaused)
             {
 
@@ -63,6 +63,7 @@ public class PouseManager : MonoBehaviour
 
 
             }
+            // ポーズでないとき
             else
             {
 
@@ -72,6 +73,7 @@ public class PouseManager : MonoBehaviour
 
         }
 
+        // スペースを押したらタイトル画面に戻る(仮)
         if (isPaused&&Input.GetKeyDown(KeyCode.Space))
         {
 
