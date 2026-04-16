@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChengeSceneA : MonoBehaviour
+public class ChangeSceneC : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void ChengeScene1()
+    public void ChengeScene3()
     {
         // 読み込むシーン
-        SceneManager.LoadScene("reisyou");
+        SceneManager.LoadScene("");
         Debug.Log("ゲームスタート");
 
     }
