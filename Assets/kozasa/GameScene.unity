@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1224670555}
-  camera: {fileID: 1843581852}
+  CameraController: {fileID: 1843581852}
 --- !u!4 &521363281
 Transform:
   m_ObjectHideFlags: 0

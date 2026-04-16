@@ -6,7 +6,7 @@ public class PouseManager : MonoBehaviour
 {
 
     [SerializeField] GameObject pauseMenuUI;
-    [SerializeField] private MonoBehaviour camera;
+    [SerializeField] private MonoBehaviour CameraController;
 
     // [SerializeField] GameObject CameraObject;
     private bool isPaused = false;
@@ -25,12 +25,15 @@ public class PouseManager : MonoBehaviour
         isPaused = true;
         pauseMenuUI.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         // CameraObject.SetActive(false);
 
-        camera.enabled = false;
+        CameraController.enabled = false;
+
+        Debug.Log("ポーズ");
+
     }
 
    public void Resumegame()
@@ -40,12 +43,14 @@ public class PouseManager : MonoBehaviour
         isPaused = false;
         pauseMenuUI.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // カーソルの非表示
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
 
         //CameraObject.SetActive(true);
 
-        camera.enabled = true;
+        CameraController.enabled = true;
 
     }
 
