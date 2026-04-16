@@ -29,16 +29,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
     [Header("地面にいるときの減速スピード(摩擦力)")]
-    public float groundDrag;
+    [SerializeField] float groundDrag;
+
+    [Header("空中にいるときの減速スピード(摩擦力)")]
+    [SerializeField] float airDrag;
 
     [Header("Rayの長さ")]
-    public float playerHeight;
+    [SerializeField] float playerHeight;
 
     //地面に触れいるかどうか
     bool grounded;
 
     //カメラ基準の向き
-    public Transform orientation;
+    [SerializeField] Transform orientation;
 
     //ADのキーを取得
     float horizontalInput;
@@ -65,18 +68,29 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float rayDistance = playerHeight * 0.5f + 0.2f;
-        Vector3 boxHalfExtents = new Vector3(1f, 0.1f, 1f);
 
-        grounded = Physics.BoxCast(
-            transform.position, 
-            boxHalfExtents, 
-            Vector3.down, 
-            out hit, 
-            transform.rotation, 
-            rayDistance);
+        Vector3 orijin = transform.position;
+
+        //Vector3 boxHalfExtents = new Vector3(1f, 0.1f, 1f);
+
+        //grounded = Physics.BoxCast(
+        //    transform.position, 
+        //    boxHalfExtents, 
+        //    Vector3.down, 
+        //    out hit, 
+        //    transform.rotation, 
+        //    rayDistance);
 
         //Rayを下に伸ばして地面かどうか判断する
-        //grounded = Physics.Raycast(transform.position, Vector3.down, rayDistance);
+        bool center = Physics.Raycast(orijin, Vector3.down, rayDistance);
+        bool left = Physics.Raycast(orijin + Vector3.left, Vector3.down, rayDistance);
+        bool right = Physics.Raycast(orijin + Vector3.right, Vector3.down, rayDistance);
+        bool back = Physics.Raycast(orijin + Vector3.back, Vector3.down, rayDistance);
+        bool Front = Physics.Raycast(orijin + Vector3.forward, Vector3.down, rayDistance);
+
+
+
+        grounded = center || left || right || back || Front;
 
         //入力取得
         MyInput();
@@ -94,21 +108,27 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
             rb.drag = groundDrag;
         else
-            rb.drag = 0;
+            rb.drag = airDrag;
 
-        //Debug.DrawRay(transform.position, Vector3.down * rayDistance, Color.red);
+        Debug.DrawRay(orijin, Vector3.down * rayDistance, Color.red);
 
-        Debug.DrawRay(transform.position, Vector3.down * rayDistance, Color.red);
+        Debug.DrawRay(orijin + Vector3.left, Vector3.down * rayDistance, Color.red);
+
+        Debug.DrawRay(orijin + Vector3.right, Vector3.down * rayDistance, Color.red);
+
+        Debug.DrawRay(orijin + Vector3.forward, Vector3.down * rayDistance, Color.red);
+
+        Debug.DrawRay(orijin + Vector3.back, Vector3.down * rayDistance, Color.red);
 
         //Vector3 boxStart = transform.position;
 
-        Vector3 boxEnd = transform.position + Vector3.down * rayDistance;
+        //Vector3 boxEnd = transform.position + Vector3.down * rayDistance;
 
         //DrawBox(boxStart, boxHalfExtents, Color.green);
 
-        DrawBox(boxEnd, boxHalfExtents, Color.blue);
+        //DrawBox(boxEnd, boxHalfExtents, Color.blue);
 
-
+        Debug.Log(grounded);
     }
 
     private void FixedUpdate()
@@ -152,6 +172,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //カメラの向きによって移動方向を決める
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection.y = 0f;
+
+        if(moveDirection != Vector3.zero)
+        {
+            Quaternion targetRotaion = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotaion, 10f * Time.deltaTime);
+        }
 
         if(grounded)
         //力を入れて進む
@@ -160,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         else if(!grounded)
             //力を入れて進む
         rb.AddForce(moveDirection.normalized * currentSpeed * 10f * airMultiplier, ForceMode.Force);
-
+   
         /*
         //地面に触れいる時だけ移動できる
         if (grounded)
@@ -185,6 +212,7 @@ public class PlayerMovement : MonoBehaviour
         //上下を無視した移動速度を取得
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
+
         //最大速度を超えそうになったら制限する
         if (flatVel.magnitude > currentSpeed)
         {
@@ -193,6 +221,8 @@ public class PlayerMovement : MonoBehaviour
             //YはそのままにしてXZだけ制限する
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+
+
     }
 
     private void Jump()
@@ -207,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
 
+    /*
     void DrawBox(Vector3 center, Vector3 halfExtents, Color color)
     {
         Vector3[] points = new Vector3[8];
@@ -241,4 +272,5 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawLine(points[2], points[6], color);
         Debug.DrawLine(points[3], points[7], color);
     }
+    */
 }
