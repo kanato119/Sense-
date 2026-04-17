@@ -500,8 +500,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNames:
-  - GameScene
-  - 
+  - stage1
+  - reisyou
 --- !u!114 &591646062
 MonoBehaviour:
   m_ObjectHideFlags: 0
