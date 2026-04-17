@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FallTile : MonoBehaviour
@@ -38,12 +35,13 @@ public class FallTile : MonoBehaviour
 
 
             }
-            else { 
-            
-                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-            
+            else
+            {
+
+                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+
             }
-          
+
 
         }
 
@@ -59,7 +57,7 @@ public class FallTile : MonoBehaviour
         hoge = true;
     }
 
- 
-  
+
+
 
 }
