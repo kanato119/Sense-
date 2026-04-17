@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -54,11 +55,16 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit hit;
 
+    Animator animator;
+
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        animator = GetComponent<Animator>();
+
         rb.freezeRotation = true;
 
         currentSpeed = moveSpeed;
@@ -68,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float rayDistance = playerHeight * 0.5f + 0.2f;
+
+
 
         Vector3 orijin = transform.position;
 
@@ -88,27 +96,33 @@ public class PlayerMovement : MonoBehaviour
         bool back = Physics.Raycast(orijin + Vector3.back, Vector3.down, rayDistance);
         bool Front = Physics.Raycast(orijin + Vector3.forward, Vector3.down, rayDistance);
 
-
-
         grounded = center || left || right || back || Front;
 
         //入力取得
         MyInput();
 
-        if (Input.GetKey(KeyCode.LeftShift))
-            currentSpeed = runSpeed;
+        bool isInput = horizontalInput != 0 || verticalInput!=0;
+        bool isRuning = Input.GetKey(KeyCode.LeftShift);
 
-        else
-            currentSpeed = moveSpeed;
+        currentSpeed = isRuning ? runSpeed : moveSpeed;
+
+        animator.SetBool("Run", isRuning && isInput && grounded);
+        animator.SetBool("Walk",!isRuning && isInput && grounded);
 
         //スピードコントロール
         SpeedControl();
 
         //地面にいるときに減速をかける
         if (grounded)
+        {
             rb.drag = groundDrag;
+        }
+
         else
+        {
             rb.drag = airDrag;
+        }
+
 
         Debug.DrawRay(orijin, Vector3.down * rayDistance, Color.red);
 
@@ -178,15 +192,29 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion targetRotaion = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotaion, 10f * Time.deltaTime);
+
+
         }
 
         if(grounded)
-        //力を入れて進む
-        rb.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
+        {
+            //力を入れて進む
+            rb.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
+
+            
+        }
 
         else if(!grounded)
+        {
             //力を入れて進む
-        rb.AddForce(moveDirection.normalized * currentSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * currentSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+
+        if(grounded && moveDirection.magnitude<0.1f)
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+        }
+
    
         /*
         //地面に触れいる時だけ移動できる
@@ -211,6 +239,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //上下を無視した移動速度を取得
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        bool isMoving = flatVel.magnitude > 0.2f;
+
 
 
         //最大速度を超えそうになったら制限する
