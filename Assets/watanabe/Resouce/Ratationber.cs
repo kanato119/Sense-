@@ -24,10 +24,20 @@ public class Ratationber : MonoBehaviour
             if(rb != null)
             {
                 Vector3 direction =(collision.transform.position - transform.position).normalized;
+
+                var v = rb.velocity;
+                v.x = direction.x;
+                v.z = direction.z;
+
+                rb.velocity = v;
+
+
                 direction.y = 0f;
 
                 Vector3 addVelocity = direction * knockbackPower + Vector3.up * upPower;
-                rb.velocity += addVelocity;
+                //rb.velocity += addVelocity;
+
+                rb.AddForce(addVelocity,ForceMode.VelocityChange);
 
             }
         }
