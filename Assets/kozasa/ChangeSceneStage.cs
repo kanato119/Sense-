@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeSceneC : MonoBehaviour
+public class ChangeSceneStage : MonoBehaviour
 {
+    // 読み込むシーンの管理
+    [SerializeField] private string[] SceneNames;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +18,11 @@ public class ChangeSceneC : MonoBehaviour
     {
     }
 
-    public void ChengeScene3()
+    public void ChengeScene(int index)
     {
         // 読み込むシーン
-        SceneManager.LoadScene("");
-        Debug.Log("ゲームスタート");
+        SceneManager.LoadScene(SceneNames[index]);
+        //Debug.Log("ゲームスタート");
 
     }
 }
