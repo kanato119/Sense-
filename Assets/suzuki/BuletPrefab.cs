@@ -24,11 +24,11 @@ public class BuletPrefab : MonoBehaviour
                 dir = dir.normalized;
 
                 Vector3 force = dir * KnockBackForce;
-                force.y = 5f;
+                force.y = 10.0f;
 
                 rb.AddForce(force, ForceMode.Impulse);
                 Destroy(gameObject);
-                
+
             }
 
         }

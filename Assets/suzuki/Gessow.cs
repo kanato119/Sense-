@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Gessow : MonoBehaviour
 {
 
-   
+
 
     [SerializeField] public GameObject Sumi;
 
@@ -38,6 +38,6 @@ public class Gessow : MonoBehaviour
         Sumi.SetActive(false);
 
 
-    } 
+    }
 
 }
