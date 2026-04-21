@@ -6,62 +6,57 @@ public class KeyItem : MonoBehaviour
 {
     public Transform Player;
 
-    public float speed = 5.0f;  //追従アイテムの移動速度
-    public float KeepDistance = 2f; //プレイヤーとキーアイテムとの距離
+    public float speed = 5.0f;
+    public float KeepDistance = 2f;
 
-    bool PlayerLockON = false; //追尾
-    private Collider keyCollider;  //鍵の当たり判定
-
-    bool PlayerKeyHold = false;
+    private bool isFollowing = false;
+    private Collider keyCollider;
 
     private void Start()
     {
         keyCollider = GetComponent<Collider>();
     }
 
-
     private void Update()
     {
-      if(Player == null)
+        if (Player == null)
         {
             return;
         }
 
-        if (!PlayerLockON)
+        if (!isFollowing)
         {
             return;
         }
 
+        float distance = Vector3.Distance(transform.position, Player.position);
 
-      float distance = Vector3.Distance(transform.position, Player.position);
-        if(distance > KeepDistance )
+        if (distance > KeepDistance)
         {
-
-           transform.position = Vector3.MoveTowards(transform.position,
-                                                    Player.position,
-                                                    speed * Time.deltaTime);
-
-
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                Player.position,
+                speed * Time.deltaTime
+            );
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isFollowing)
         {
+            isFollowing = true;
 
-            PlayerLockON = true;
+            KeyHold keyHolder = other.GetComponent<KeyHold>();
+            if (keyHolder != null)
+            {
+                keyHolder.hasKey = true;
+            }
 
-            if(keyCollider != null)
+            if (keyCollider != null)
             {
                 keyCollider.enabled = false;
             }
-
-
         }
     }
-
-
 }
