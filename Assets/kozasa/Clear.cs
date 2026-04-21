@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Clear : MonoBehaviour
 {
@@ -41,7 +42,8 @@ public class Clear : MonoBehaviour
         Debug.Log("ゴール");
         timer.StopTimer();
         Time.timeScale = 0f;
-      
+        SceneManager.LoadScene("ResultScene");
+
 
     }
 }

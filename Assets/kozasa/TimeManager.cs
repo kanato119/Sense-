@@ -26,6 +26,7 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
 
+        // タイマーを進める
         if (isTimer)
         {
 
@@ -39,17 +40,18 @@ public class TimeManager : MonoBehaviour
 
     public void StopTimer()
     {
-
+        // falseになったらタイマーを止める
         isTimer = false;
 
         if (!isTimer)
         {
-
+            // 現在のタイムを代入
             resultTime = currentTime;
 
         }
 
         SaveTime();
+         SaveRanking(); 
 
     }
 
@@ -67,7 +69,7 @@ public class TimeManager : MonoBehaviour
 
     private void SaveTime()
     {
-
+        // ベストタイム
         float bestTime = PlayerPrefs.GetFloat("BestTime", Mathf.Infinity);
 
         if (resultTime < bestTime)
@@ -83,6 +85,7 @@ public class TimeManager : MonoBehaviour
 
     private void DisplayBestTime()
     {
+        // 画面に表示
 
         float bestTime = PlayerPrefs.GetFloat("BestTime", 0f);
 
@@ -91,4 +94,31 @@ public class TimeManager : MonoBehaviour
         bestTimeText.text="Best : "+bestTime.ToString("F2") + "s";
 
     }
+
+    void SaveRanking()
+    {
+
+        List<float>ranking=new List<float>();
+
+        for(int i = 0; i < 5; i++)
+        {
+
+            float time = PlayerPrefs.GetFloat("Rank" + i, Mathf.Infinity);
+            ranking.Add(time);
+        }
+
+        // 今回のタイム追加
+        ranking.Add(resultTime);
+
+        // 小さい順に並び替え（速いほど上）
+        ranking.Sort();
+
+        // 上位5つ保存
+        for (int i = 0; i < 5; i++)
+        {
+            PlayerPrefs.SetFloat("Rank" + i, ranking[i]);
+        }
+
+    }
+
 }
