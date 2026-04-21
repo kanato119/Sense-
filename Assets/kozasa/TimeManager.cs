@@ -51,6 +51,7 @@ public class TimeManager : MonoBehaviour
         }
 
         SaveTime();
+         SaveRanking(); 
 
     }
 
