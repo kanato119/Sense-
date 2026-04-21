@@ -12,10 +12,25 @@ public class MoveLift : MonoBehaviour
 
     [SerializeField]private int LiftNum = 0;
 
+    //プレイヤーのRigidBody
+
+
+    //このオブジェクトのRigidBody
+    private Rigidbody TileRb;
+
+    //オブジェクトの速度
+    private Vector3 LastTileForce;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        //playerのタグからプレイヤーのRigidBodyの取得
+        GameObject PlayerSaveForce = GameObject.FindWithTag("Player");
+        Rigidbody PlayerOnTileForce =PlayerSaveForce.GetComponent<Rigidbody>();
+
+
 
     }
 
@@ -24,15 +39,6 @@ public class MoveLift : MonoBehaviour
     {
 
 
-
-        //LiftPointsの配列を調べる
-        //for (int i = 0; i < LiftPoints.Length; i++)
-        //{
-
-
-        //transform.position = Vector3.Lerp(transform.position,
-        //    LiftPoints[0].transform.position,
-        //    Time.deltaTime * LiftSpeed);
 
 
         Vector3 dir = (LiftPoints[LiftNum].position-transform.position).normalized;
@@ -48,10 +54,19 @@ public class MoveLift : MonoBehaviour
         }
 
         //}
+    }
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.transform.CompareTag("Player"))
+        {
+
+           
 
 
-
-
+        }
 
     }
+
+
+
 }
