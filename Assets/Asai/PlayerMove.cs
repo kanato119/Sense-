@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -58,6 +59,11 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
 
     Rigidbody rb;
+
+    //追加（鈴木）
+    public MoveLift pMoveLift;
+
+    private bool OnTile;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +74,9 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         currentSpeed = moveSpeed;
+
+        //追加（鈴木）
+        OnTile = false;
     }
 
     // Update is called once per frame
@@ -277,6 +286,26 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+
+    //追加（鈴木）
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Tile"))
+        {
+
+            
+
+            pMoveLift.TileVector();
+
+            //rb.AddForce(pMoveLift.TileOnPlayerMove(Collision collision) / Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+            //transform.position += collision.transform.position;
+
+            rb.velocity += transform.position;
+
+        }
     }
 
     /*

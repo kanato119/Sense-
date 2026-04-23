@@ -78,22 +78,20 @@ public class MoveLift : MonoBehaviour
         //}
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
 
 
-            Rigidbody rb = collision.rigidbody;
 
 
-            //rb.velocity += CurrentTile / Time.fixedDeltaTime;
+    //        //rb.velocity += CurrentTile / Time.fixedDeltaTime;
 
-            rb.AddForce(CurrentTile / Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-        }
-    }
 
+    //    }
+    //}
 
     //private void OnCollisionEnter(Collision collision)
     //{
@@ -112,7 +110,7 @@ public class MoveLift : MonoBehaviour
     //    }
     //}
 
-    public void TileVector()
+    public Vector3 TileVector()
     {
         //前のポジションの取得
         Vector3 PastTile = transform.position;
@@ -123,8 +121,29 @@ public class MoveLift : MonoBehaviour
         transform.position += dir * LiftSpeed * Time.deltaTime;
 
         //移動量の計算（今の座標から前の座標を引いて出す）
-        Vector3 CurrenTile = transform.position - PastTile;
+        Vector3 CurrentTile = transform.position - PastTile;
+
+        return CurrentTile;
 
     }
+    public void TileOnPlayerMove(Collision collision)
+    {
+
+            //Collision collision;
+
+        if (collision.gameObject.CompareTag("Player"))
+        {   //rb.velocity += CurrentTile / Time.fixedDeltaTime;
+
+
+ 
+            Rigidbody rb = collision.rigidbody;
+
+            rb.AddForce(CurrentTile / Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+        }
+    }
+
+
+
 
 }
