@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerHeight;
 
     //地面に触れいるかどうか
-    bool grounded;
+    public bool grounded;
 
     //カメラ基準の向き
     [SerializeField] Transform orientation;
@@ -75,19 +75,18 @@ public class PlayerMovement : MonoBehaviour
     {
         float rayDistance = playerHeight * 0.5f + 0.2f;
 
-
-
         Vector3 orijin = transform.position;
 
         //Vector3 boxHalfExtents = new Vector3(1f, 0.1f, 1f);
+        /*
 
-        //grounded = Physics.BoxCast(
-        //    transform.position, 
-        //    boxHalfExtents, 
-        //    Vector3.down, 
-        //    out hit, 
-        //    transform.rotation, 
-        //    rayDistance);
+        grounded = Physics.BoxCast(
+            transform.position, 
+            boxHalfExtents, 
+            Vector3.down, 
+            out hit, 
+            transform.rotation, 
+            rayDistance);
 
         //Rayを下に伸ばして地面かどうか判断する
         bool center = Physics.Raycast(orijin, Vector3.down, rayDistance);
@@ -98,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
         grounded = center || left || right || back || Front;
 
+        */
         //入力取得
         MyInput();
 
@@ -108,6 +108,14 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("Run", isRuning && isInput && grounded);
         animator.SetBool("Walk",!isRuning && isInput && grounded);
+
+        animator.SetBool("Jump 0", !grounded);
+
+        animator.SetBool("Grounded", grounded);
+
+        animator.SetFloat("yVelocity", rb.velocity.y);
+
+
 
         //スピードコントロール
         SpeedControl();
@@ -123,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = airDrag;
         }
 
-
+        /*
         Debug.DrawRay(orijin, Vector3.down * rayDistance, Color.red);
 
         Debug.DrawRay(orijin + Vector3.left, Vector3.down * rayDistance, Color.red);
@@ -134,15 +142,16 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.DrawRay(orijin + Vector3.back, Vector3.down * rayDistance, Color.red);
 
-        //Vector3 boxStart = transform.position;
+        Vector3 boxStart = transform.position;
 
-        //Vector3 boxEnd = transform.position + Vector3.down * rayDistance;
+        Vector3 boxEnd = transform.position + Vector3.down * rayDistance;
 
-        //DrawBox(boxStart, boxHalfExtents, Color.green);
+        DrawBox(boxStart, boxHalfExtents, Color.green);
 
-        //DrawBox(boxEnd, boxHalfExtents, Color.blue);
+        DrawBox(boxEnd, boxHalfExtents, Color.blue);
+        */
 
-        Debug.Log(grounded);
+        //Debug.Log(grounded);
     }
 
     private void FixedUpdate()
@@ -261,6 +270,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        animator.SetTrigger("Jump");
     }
 
     private void ResetJump()
