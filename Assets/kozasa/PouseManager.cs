@@ -36,7 +36,7 @@ public class PouseManager : MonoBehaviour
 
     }
 
-   public void Resumegame()
+   public void ResumeGame()
     {
         // パネルを非表示にさせてゲームを動かす
         Time.timeScale = 1.0f;
@@ -60,16 +60,8 @@ public class PouseManager : MonoBehaviour
         // ESCキーを押したらポーズ
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // すでにポーズだったら
-            if (isPaused)
-            {
-
-                Resumegame();
-
-
-            }
             // ポーズでないとき
-            else
+            if (!isPaused)
             {
 
                 PauseGame();
