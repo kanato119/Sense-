@@ -8,6 +8,7 @@ TagManager:
   - ArrowTag
   - Ground
   - Goal
+  - Tile
   layers:
   - Default
   - TransparentFX
