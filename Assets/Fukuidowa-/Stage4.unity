@@ -588,6 +588,7 @@ MonoBehaviour:
   - {fileID: 426908254}
   LiftSpeed: 10
   LiftNum: 0
+  OnPlayer: 0
 --- !u!65 &407000064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1534,6 +1535,14 @@ PrefabInstance:
     - target: {fileID: 6008313338006551620, guid: e737d6e9bc5b3884c8cfea261b1666ce, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545788773991513119, guid: e737d6e9bc5b3884c8cfea261b1666ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 463.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545788773991513119, guid: e737d6e9bc5b3884c8cfea261b1666ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 199.92
       objectReference: {fileID: 0}
     - target: {fileID: 9131930394178293739, guid: e737d6e9bc5b3884c8cfea261b1666ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2777,6 +2786,7 @@ MonoBehaviour:
   - {fileID: 530881124}
   LiftSpeed: 3
   LiftNum: 0
+  OnPlayer: 0
 --- !u!4 &1059352191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3cb42426ef3812d48abc2e7f3f311cb4, type: 3}
@@ -4026,6 +4036,7 @@ MonoBehaviour:
   - {fileID: 1244581194}
   LiftSpeed: 3
   LiftNum: 0
+  OnPlayer: 0
 --- !u!1 &1840143332
 GameObject:
   m_ObjectHideFlags: 0
