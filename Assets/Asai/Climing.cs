@@ -111,9 +111,39 @@ public class Climing : MonoBehaviour
 
      IEnumerator ClimbLedge()
     {
-        yield return null;
+        climbing = true;
+
+        pm.enabled = false;
+        rb.isKinematic = true;
+
+        animator.SetTrigger("Climb");
+
+        Vector3 startPos = transform.position;
+
+        Vector3 targetPos = 
+            frontWallHit.point + 
+            Vector3.up * climbHeightOffset + 
+            orientaion.forward * climbForwardOffset;
+
+        float time = 0;
+
+        while (time < climbDuration)
+        {
+            transform.position = Vector3.Lerp(startPos, targetPos, time / climbDuration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+       transform.position = targetPos;
+
+        rb.isKinematic = false;
+        pm.enabled = true;
+
+        climbing = false;
     }
 
+/*
     private void StartClimbing()
     {
         climbing = true;
@@ -122,7 +152,6 @@ public class Climing : MonoBehaviour
 
         //Camera fov change
     }
-/*
     private void ClimbingMovement()
     {
         rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
