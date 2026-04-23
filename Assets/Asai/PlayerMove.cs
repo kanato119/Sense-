@@ -303,7 +303,11 @@ public class PlayerMovement : MonoBehaviour
 
             //transform.position += collision.transform.position;
 
-            rb.velocity += transform.position;
+            // rb.velocity += transform.position;
+
+            
+            transform.position += pMoveLift.TileVector();
+
 
         }
     }
