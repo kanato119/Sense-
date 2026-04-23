@@ -135,10 +135,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6374487616026054148}
-  - component: {fileID: 7497705398388544174}
-  - component: {fileID: 4050110167891764369}
-  - component: {fileID: 4896785068210267617}
-  - component: {fileID: 6609628210473282652}
   m_Layer: 0
   m_Name: Ch34_nonPBR (1)
   m_TagString: Player
@@ -161,102 +157,8 @@ Transform:
   m_Children:
   - {fileID: 4931515151934053881}
   - {fileID: 8881473396247505564}
-  - {fileID: 2932119080017395820}
   m_Father: {fileID: 9131930394178293739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7497705398388544174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796914583871178332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b585b59913f58f345a3d4980774ac07f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 9
-  jumpForce: 25
-  jumpCooldown: 0
-  fallMutipler: 4
-  airMultiplier: 0.3
-  runSpeed: 20
-  jumpKey: 32
-  groundDrag: 9
-  airDrag: 0.1
-  playerHeight: 0.5
-  orientation: {fileID: 2932119080017395820}
---- !u!54 &4050110167891764369
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796914583871178332}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 10
-  m_AngularDrag: 26.13
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 2
-  m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!64 &4896785068210267617
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796914583871178332}
-  m_Material: {fileID: 13400000, guid: e09afe2f3287e084caead254837b357a, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1135364119011605027, guid: ad588a2da70ec214da57f8d4f2d8a0ac, type: 3}
---- !u!95 &6609628210473282652
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796914583871178332}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7be7aeda371cc1d4296550676793ee8a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &827316116046010396
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2932119080017395820}
   - {fileID: 6374487616026054148}
   m_Father: {fileID: 287136501572031209}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1918,13 +1821,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051249746581841385}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.5446366, z: -0, w: -0.83867216}
-  m_LocalPosition: {x: 0.02, y: 0.03, z: 0.06}
-  m_LocalScale: {x: 0.28571427, y: 0.28571427, z: 0.28571427}
+  m_LocalRotation: {x: -1.364242e-12, y: -0.5446366, z: -5.9117156e-12, w: -0.83867216}
+  m_LocalPosition: {x: 3.7285557, y: -2.4449997, z: 1.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1902159243951220353}
-  m_Father: {fileID: 6374487616026054148}
+  m_Father: {fileID: 9131930394178293739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6449997424555038945
 GameObject:
