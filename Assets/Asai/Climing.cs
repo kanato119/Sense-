@@ -23,20 +23,13 @@ public class Climing : MonoBehaviour
     public float maxWallLookAngle;
 
 
-    [Header("登る時間")]
-    public float climbSpeed;
-
-    [Header("登れる最大時間")]
-    public float maxClimbTime;
-
-    //残りのぼれる時間
-    private float climbTimer;
-
 
     [SerializeField] float climbDuration = 0.5f;
     [SerializeField] float climbHeightOffset = 1.5f;
     [SerializeField] float climbForwardOffset = 0.5f;
 
+    [Header("SphereCastの高さを変える")]
+    [SerializeField] float wallCheckHeight;
 
     //壁に当たった情報
     private RaycastHit frontWallHit;
@@ -76,6 +69,7 @@ public class Climing : MonoBehaviour
             }
         }
 
+        Debug.Log(wallFront);
     }
 
     /*
@@ -99,21 +93,53 @@ public class Climing : MonoBehaviour
     */
     private void WallCheck()
     {
-        wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+        Vector3 origin = transform.position + Vector3.up * wallCheckHeight;
 
-        wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
+        wallFront = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
 
-        if(pm.grounded)
+        if(wallFront)
         {
-            climbTimer = maxClimbTime;
+            wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
         }
+
+
     }
 
      IEnumerator ClimbLedge()
     {
-        yield return null;
+        climbing = true;
+
+        pm.enabled = false;
+        rb.isKinematic = true;
+
+        animator.SetTrigger("Climb");
+
+        Vector3 startPos = transform.position;
+
+        Vector3 targetPos = 
+            frontWallHit.point + 
+            frontWallHit.normal * 0.3f + 
+            Vector3.up * climbHeightOffset;
+
+        float time = 0;
+
+        while (time < climbDuration)
+        {
+            transform.position = Vector3.Lerp(startPos, targetPos, time / climbDuration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+       transform.position = targetPos;
+
+        rb.isKinematic = false;
+        pm.enabled = true;
+
+        climbing = false;
     }
 
+/*
     private void StartClimbing()
     {
         climbing = true;
@@ -122,7 +148,6 @@ public class Climing : MonoBehaviour
 
         //Camera fov change
     }
-/*
     private void ClimbingMovement()
     {
         rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
@@ -146,7 +171,7 @@ public class Climing : MonoBehaviour
         Gizmos.color = wallFront ? Color.green : Color.red;
 
         // 開始位置
-        Vector3 start = transform.position;
+        Vector3 start = transform.position + Vector3.up * wallCheckHeight;
 
         // 終点
         Vector3 end = start + orientaion.forward * detectionLength;
