@@ -23,20 +23,13 @@ public class Climing : MonoBehaviour
     public float maxWallLookAngle;
 
 
-    [Header("登る時間")]
-    public float climbSpeed;
-
-    [Header("登れる最大時間")]
-    public float maxClimbTime;
-
-    //残りのぼれる時間
-    private float climbTimer;
-
 
     [SerializeField] float climbDuration = 0.5f;
     [SerializeField] float climbHeightOffset = 1.5f;
     [SerializeField] float climbForwardOffset = 0.5f;
 
+    [Header("SphereCastの高さを変える")]
+    [SerializeField] float wallCheckHeight;
 
     //壁に当たった情報
     private RaycastHit frontWallHit;
@@ -76,6 +69,7 @@ public class Climing : MonoBehaviour
             }
         }
 
+        Debug.Log(wallFront);
     }
 
     /*
@@ -99,14 +93,16 @@ public class Climing : MonoBehaviour
     */
     private void WallCheck()
     {
-        wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+        Vector3 origin = transform.position + Vector3.up * wallCheckHeight;
 
-        wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
+        wallFront = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
 
-        if(pm.grounded)
+        if(wallFront)
         {
-            climbTimer = maxClimbTime;
+            wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
         }
+
+
     }
 
      IEnumerator ClimbLedge()
@@ -122,8 +118,8 @@ public class Climing : MonoBehaviour
 
         Vector3 targetPos = 
             frontWallHit.point + 
-            Vector3.up * climbHeightOffset + 
-            orientaion.forward * climbForwardOffset;
+            frontWallHit.normal * 0.3f + 
+            Vector3.up * climbHeightOffset;
 
         float time = 0;
 
@@ -175,7 +171,7 @@ public class Climing : MonoBehaviour
         Gizmos.color = wallFront ? Color.green : Color.red;
 
         // 開始位置
-        Vector3 start = transform.position;
+        Vector3 start = transform.position + Vector3.up * wallCheckHeight;
 
         // 終点
         Vector3 end = start + orientaion.forward * detectionLength;
