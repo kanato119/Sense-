@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlowerFan : MonoBehaviour
 {
    
-    public Vector3 blowDirection = Vector3.up;
+    public Vector3 blowDirection = Vector3.right;
     public float blowPower = 20f;
     public float onTime = 3f;
     public float offTime = 3f;
@@ -63,7 +63,7 @@ public class BlowerFan : MonoBehaviour
 
                 if (rb != null && isOn)
                 {
-                    rb.AddForce(transform.forward * blowPower, ForceMode.Acceleration);
+                    rb.AddForce(blowDirection.normalized * blowPower, ForceMode.Acceleration);
                     lastVelocity = rb.velocity;
                 }
 

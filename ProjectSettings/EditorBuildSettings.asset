@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameData/StartScene.unity
     guid: 3c631fcdd2013c2468c235ddc811d8fc
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameData/stage1.unity
     guid: d3f87517e55b659429f53dddd3c0a65f
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameData/reisyou.unity
     guid: e6cbd0f0d8ca8e448896a2e2693bcfa3
+  - enabled: 1
+    path: Assets/kozasa/GameScene.unity
+    guid: 4e1cf8660b7fb8845b4e3668ba9da1b4
+  - enabled: 1
+    path: Assets/kozasa/ResultScene.unity
+    guid: 8a7e1e6eb1c12974588a0183cd629585
   m_configObjects: {}

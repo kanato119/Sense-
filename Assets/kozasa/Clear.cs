@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Clear : MonoBehaviour
 {
+    [SerializeField] TimeManager timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,10 @@ public class Clear : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("ゴール");
+        timer.StopTimer();
         Time.timeScale = 0f;
+        SceneManager.LoadScene("ResultScene");
+
 
     }
 }
