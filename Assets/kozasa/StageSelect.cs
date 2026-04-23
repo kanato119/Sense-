@@ -6,7 +6,9 @@ public class StageSelect : MonoBehaviour
 {
 
     [SerializeField] GameObject StageSelectUI;
+    [SerializeField] GameObject CheckPanelUI;
     private bool isStageSelect = false;
+    private bool isCheck=false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,7 @@ public class StageSelect : MonoBehaviour
     {
 
         isStageSelect=true;
+        isCheck = false;
         StageSelectUI.SetActive(true);
 
         Cursor.visible = true;
@@ -29,7 +32,17 @@ public class StageSelect : MonoBehaviour
     {
 
         isStageSelect = false;
+       
         StageSelectUI.SetActive(false);
+
+    }
+
+    public void EndCheck()
+    {
+
+        isCheck = true;
+
+        CheckPanelUI.SetActive(true);
 
     }
 
