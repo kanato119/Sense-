@@ -17,7 +17,7 @@ public class MoveLift : MonoBehaviour
     [SerializeField] private bool OnPlayer;
     //プレイヤーのRigidBody
     Vector3 PastTile;
-    Vector3 CurrenTile;
+    Vector3 CurrentTile;
 
     GameObject PlayerSaveForce;
     Rigidbody PlayerOnTileForce;
@@ -30,6 +30,7 @@ public class MoveLift : MonoBehaviour
         Rigidbody PlayerOnTileForce = PlayerSaveForce.GetComponent<Rigidbody>();
 
         OnPlayer = false;
+
 
     }
 
@@ -47,8 +48,10 @@ public class MoveLift : MonoBehaviour
         //移動量の計算（今の座標から前の座標を引いて出す）
         Vector3 CurrenTile = transform.position - PastTile;
 
+       
 
-        if (transform.position == LiftPoints[LiftNum].transform.position)
+        //誤差を許容
+        if (Vector3.Distance(transform.position, LiftPoints[LiftNum].position) < 1.0f)
         {
             LiftNum++;
         }
@@ -60,7 +63,7 @@ public class MoveLift : MonoBehaviour
 
         if (OnPlayer)
         {
-            PlayerOnTileForce.MovePosition(GameObject.FindWithTag("Player").transform.position + CurrenTile);
+            PlayerOnTileForce.MovePosition(GameObject.FindWithTag("Player").transform.position += CurrenTile);
             //collision.rigidbody.MovePosition(collision.rigidbody.position + CurrenTile);
         }
 
