@@ -21,6 +21,8 @@ public class KeyDoor : MonoBehaviour
     [Header("プレイヤータグ")]
     public string playerTag = "Player";
 
+    [SerializeField] GameObject Key;
+
     private bool isPlayerInside = false;
     private bool isOpen = false;
     private bool hasOpenedOnce = false;
@@ -109,6 +111,8 @@ public class KeyDoor : MonoBehaviour
                 return;
             }
         }
+
+        Key.SetActive(false);
 
         isOpen = true;
         hasOpenedOnce = true;
