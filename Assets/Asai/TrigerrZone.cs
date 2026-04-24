@@ -17,7 +17,7 @@ public class TrigerrZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ground"))
+        if (other.CompareTag("Ground") || other.CompareTag("Tile"))
         {
             Debug.Log("Ground Hit");
             Pm.grounded = true;
@@ -26,7 +26,7 @@ public class TrigerrZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Ground"))
+        if(other.CompareTag("Ground") || other.CompareTag("Tile"))
         {
             Pm.grounded = false;
         }
