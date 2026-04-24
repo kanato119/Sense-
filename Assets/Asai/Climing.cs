@@ -22,6 +22,9 @@ public class Climing : MonoBehaviour
     [Header("壁に足して許容する角度")]
     public float maxWallLookAngle;
 
+    [Header("Keybinds")]
+    [SerializeField] KeyCode Climb = KeyCode.Space;
+
 
 
     [SerializeField] float climbDuration = 0.5f;
@@ -56,7 +59,7 @@ public class Climing : MonoBehaviour
         //壁の検出
         WallCheck();
 
-        if(wallFront && Input.GetKeyDown(KeyCode.E) && wallLookAngle < maxWallLookAngle)
+        if(wallFront && Input.GetKeyDown(Climb) && wallLookAngle < maxWallLookAngle)
         {
             bool spaceAbove = !Physics.Raycast(transform.position + Vector3.up * climbHeightOffset,
                 orientaion.forward,
