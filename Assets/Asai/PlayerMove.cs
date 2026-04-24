@@ -302,9 +302,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Tile"))
         {
 
-            
+            Debug.Log("JIJIJIJIJIJIJIJI");
 
-            pMoveLift.TileVector();
+            // pMoveLift.TileVector();
 
             //rb.AddForce(pMoveLift.TileOnPlayerMove(Collision collision) / Time.fixedDeltaTime, ForceMode.VelocityChange);
 
@@ -312,8 +312,14 @@ public class PlayerMovement : MonoBehaviour
 
             // rb.velocity += transform.position;
 
+
+            GameObject obj = collision.gameObject;
             
-            transform.position += pMoveLift.TileVector();
+            MoveLift lift = obj.GetComponent<MoveLift>();
+
+            Debug.Log(lift.TileVector());
+
+            transform.position += lift.TileVector();
 
 
         }
