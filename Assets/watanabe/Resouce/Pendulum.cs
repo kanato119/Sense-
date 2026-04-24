@@ -5,8 +5,8 @@ using static UnityEditor.PlayerSettings;
 
 public class Pendulum : MonoBehaviour
 {
-    public float speed = 3.0f;//振り子の速度
-    public float limit = 60f;
+    public float speed = 1.0f;//振り子の速度
+    public float limit = 1f;
 
     public bool randomStart = false;
     private float random = 0;

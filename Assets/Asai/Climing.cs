@@ -23,25 +23,18 @@ public class Climing : MonoBehaviour
     public float maxWallLookAngle;
 
 
-    [Header("登る時間")]
-    public float climbSpeed;
-
-    [Header("登れる最大時間")]
-    public float maxClimbTime;
-
-    //残りのぼれる時間
-    private float climbTimer;
-
 
     [SerializeField] float climbDuration = 0.5f;
     [SerializeField] float climbHeightOffset = 1.5f;
     [SerializeField] float climbForwardOffset = 0.5f;
 
+    [Header("SphereCastの高さを変える")]
+    [SerializeField] float wallCheckHeight;
 
     //壁に当たった情報
     private RaycastHit frontWallHit;
     //前に壁があるかどうか
-    private bool wallFront;
+    public bool wallFront;
     //実査の壁との角度
     private float wallLookAngle;
 
@@ -76,6 +69,7 @@ public class Climing : MonoBehaviour
             }
         }
 
+        Debug.Log(wallFront);
     }
 
     /*
@@ -97,18 +91,54 @@ public class Climing : MonoBehaviour
         }
     }
     */
+    
     private void WallCheck()
     {
-        wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+        Vector3 origin = transform.position + Vector3.up * wallCheckHeight;
 
-        wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
+        RaycastHit hit;
 
-        if(pm.grounded)
+        wallFront = false;
+
+        /*
+        wallFront = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+        if(wallFront)
         {
-            climbTimer = maxClimbTime;
+            wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
         }
-    }
 
+        */
+        //bool rayHit = Physics.Raycast(origin, orientaion.forward, out frontWallHit,detectionLength, whatIsWall);
+        //bool sphereHit = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+
+        if(Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out hit, detectionLength, whatIsWall))
+        {
+            wallFront = true;
+
+            frontWallHit = hit;
+        }
+
+        else
+        {
+
+            Collider[] hits = Physics.OverlapSphere(origin + orientaion.forward * 0.3f, sphereCastRadius, whatIsWall);
+
+            if (hits.Length > 0)
+            {
+                wallFront = true;
+
+                frontWallHit.point = hits[0].ClosestPoint(origin);
+                frontWallHit.normal = (origin - frontWallHit.point).normalized;
+            }
+        }
+
+        if (wallFront)
+        {
+            wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
+        }
+
+    }
+    
      IEnumerator ClimbLedge()
     {
         climbing = true;
@@ -122,8 +152,8 @@ public class Climing : MonoBehaviour
 
         Vector3 targetPos = 
             frontWallHit.point + 
-            Vector3.up * climbHeightOffset + 
-            orientaion.forward * climbForwardOffset;
+            frontWallHit.normal * 0.3f + 
+            Vector3.up * climbHeightOffset;
 
         float time = 0;
 
@@ -167,7 +197,10 @@ public class Climing : MonoBehaviour
 
         //particle effect
     }
+
     */
+
+
     private void OnDrawGizmos()
     {
         if (orientaion == null) return;
@@ -175,7 +208,7 @@ public class Climing : MonoBehaviour
         Gizmos.color = wallFront ? Color.green : Color.red;
 
         // 開始位置
-        Vector3 start = transform.position;
+        Vector3 start = transform.position + Vector3.up * wallCheckHeight;
 
         // 終点
         Vector3 end = start + orientaion.forward * detectionLength;

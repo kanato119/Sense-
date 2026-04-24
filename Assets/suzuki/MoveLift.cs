@@ -48,7 +48,7 @@ public class MoveLift : MonoBehaviour
         //transform.position += dir * LiftSpeed * Time.deltaTime;
 
         ////移動量の計算（今の座標から前の座標を引いて出す）
-        //Vector3 CurrenTile = transform.position - PastTile;
+        Vector3 CurrenTile = transform.position - PastTile;
           */
 
         TileVector();
@@ -74,46 +74,6 @@ public class MoveLift : MonoBehaviour
         //}
 
 
-
-        //}
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-
-            Rigidbody rb = collision.rigidbody;
-
-
-            //rb.velocity += CurrentTile / Time.fixedDeltaTime;
-
-            rb.AddForce(CurrentTile / Time.fixedDeltaTime, ForceMode.VelocityChange);
-
-        }
-    }
-
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        OnPlayer = true;
-    //    }
-    //}
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-
-    //        OnPlayer = false;
-
-    //    }
-    //}
-
-    public void TileVector()
-    {
         //前のポジションの取得
         Vector3 PastTile = transform.position;
 
@@ -124,7 +84,44 @@ public class MoveLift : MonoBehaviour
 
         //移動量の計算（今の座標から前の座標を引いて出す）
         Vector3 CurrenTile = transform.position - PastTile;
+        //}
+    }
+
+
+    public Vector3 TileVector()
+    {
+        //前のポジションの取得
+        Vector3 PastTile = transform.position;
+
+        //移動する方向を取得
+        Vector3 dir = (LiftPoints[LiftNum].position - transform.position).normalized;
+        //移動スピードを固定
+        transform.position += dir * LiftSpeed * Time.deltaTime;
+
+        //移動量の計算（今の座標から前の座標を引いて出す）
+        Vector3 CurrentTile = transform.position - PastTile;
+
+        return CurrentTile;
 
     }
+    public void TileOnPlayerMove(Collision collision)
+    {
+
+            //Collision collision;
+
+        if (collision.gameObject.CompareTag("Player"))
+        {   //rb.velocity += CurrentTile / Time.fixedDeltaTime;
+
+
+ 
+            Rigidbody rb = collision.rigidbody;
+
+            rb.AddForce(CurrentTile / Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+        }
+    }
+
+
+
 
 }

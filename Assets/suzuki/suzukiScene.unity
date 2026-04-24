@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7545788773991513119, guid: e737d6e9bc5b3884c8cfea261b1666ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -433,7 +437,7 @@ GameObject:
   - component: {fileID: 794456502}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -839,7 +843,7 @@ GameObject:
   - component: {fileID: 1177935767}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -943,7 +947,7 @@ Transform:
   m_GameObject: {fileID: 1177935761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.089197, y: -7.53, z: -44.788986}
+  m_LocalPosition: {x: -8.089197, y: -6.8, z: -44.788986}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1806,7 +1810,7 @@ Transform:
   m_GameObject: {fileID: 2055307226}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7177455, y: 0.69528246, z: -0.025597734, w: -0.027722893}
-  m_LocalPosition: {x: -1.4, y: -56, z: -78.7}
+  m_LocalPosition: {x: 0.1, y: -9.6, z: -78.6}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []

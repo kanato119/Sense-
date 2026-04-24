@@ -10,10 +10,21 @@ public class rotateBlock : MonoBehaviour
     [SerializeField] bool SeeSowY;
     [SerializeField] bool SeeSowZ;
 
+    [SerializeField] float ResetAngleTime;
+
+    private float _Time;
+
+    bool ExitPlayer;
+
 
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
+
+        _Time = ResetAngleTime;
+
+        ExitPlayer = false;
+
     }
 
     void FixedUpdate()
@@ -115,5 +126,43 @@ public class rotateBlock : MonoBehaviour
                 _rigidBody.angularVelocity = Vector3.zero;
             }
         }
+
+
+        if (ExitPlayer)
+        {
+
+
+
+            ResetAngleTime -= Time.deltaTime;
+
+            if (ResetAngleTime <= 0)
+            {
+                _Time = ResetAngleTime;
+
+                ExitPlayer = false;
+            }
+            else
+            {
+
+             
+               
+
+            }
+
+        }
+
+
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+
+        //if(collision.gameObject.CompareTag("Player")) { 
+        ExitPlayer = true;
+
+        //}
+
+    }
+   
+
 }
