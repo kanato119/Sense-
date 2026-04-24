@@ -16,8 +16,8 @@ public class MoveLift : MonoBehaviour
 
     [SerializeField] private bool OnPlayer;
     //プレイヤーのRigidBody
-    Vector3 PastTile;
-    Vector3 CurrentTile;
+
+    Vector3 Movement;
 
     GameObject PlayerSaveForce;
     Rigidbody PlayerOnTileForce;
@@ -51,7 +51,24 @@ public class MoveLift : MonoBehaviour
         Vector3 CurrenTile = transform.position - PastTile;
           */
 
-        TileVector();
+        Movement = new Vector3(0.0f, 0.0f, 0.0f);
+
+
+        //前のポジションの取得
+        Vector3 PastTile = transform.position;
+
+        //移動する方向を取得
+        Vector3 dir = (LiftPoints[LiftNum].position - transform.position).normalized;
+        //移動スピードを固定
+        transform.position += dir * LiftSpeed * Time.deltaTime;
+
+        //移動量の計算（今の座標から前の座標を引いて出す）
+        Vector3 CurrenTile = transform.position - PastTile;
+        Movement = transform.position - PastTile;
+
+        Debug.Log(Movement);
+
+        // TileVector();
        
 
         //誤差を許容
@@ -73,35 +90,24 @@ public class MoveLift : MonoBehaviour
 
         //}
 
-
-        //前のポジションの取得
-        Vector3 PastTile = transform.position;
-
-        //移動する方向を取得
-        Vector3 dir = (LiftPoints[LiftNum].position - transform.position).normalized;
-        //移動スピードを固定
-        transform.position += dir * LiftSpeed * Time.deltaTime;
-
-        //移動量の計算（今の座標から前の座標を引いて出す）
-        Vector3 CurrenTile = transform.position - PastTile;
         //}
     }
 
 
     public Vector3 TileVector()
     {
-        //前のポジションの取得
-        Vector3 PastTile = transform.position;
+        ////前のポジションの取得
+        //Vector3 PastTile = transform.position;
 
-        //移動する方向を取得
-        Vector3 dir = (LiftPoints[LiftNum].position - transform.position).normalized;
-        //移動スピードを固定
-        transform.position += dir * LiftSpeed * Time.deltaTime;
+        ////移動する方向を取得
+        //Vector3 dir = (LiftPoints[LiftNum].position - transform.position).normalized;
+        ////移動スピードを固定
+        //transform.position += dir * LiftSpeed * Time.deltaTime;
 
-        //移動量の計算（今の座標から前の座標を引いて出す）
-        Vector3 CurrentTile = transform.position - PastTile;
+        ////移動量の計算（今の座標から前の座標を引いて出す）
+        //Vector3 CurrentTile = transform.position - PastTile;
 
-        return CurrentTile;
+        return Movement;
 
     }
     public void TileOnPlayerMove(Collision collision)

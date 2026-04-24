@@ -315,7 +315,9 @@ public class PlayerMovement : MonoBehaviour
 
             GameObject obj = collision.gameObject;
             
-            MoveLift lift = obj.GetComponent<MoveLift>();  
+            MoveLift lift = obj.GetComponent<MoveLift>();
+
+            Debug.Log(lift.TileVector());
 
             transform.position += lift.TileVector();
 
