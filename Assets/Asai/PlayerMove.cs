@@ -42,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     //地面に触れいるかどうか
     public bool grounded;
 
+    private bool wasGrounded;
+
     //カメラ基準の向き
     [SerializeField] Transform orientation;
 
@@ -109,6 +111,15 @@ public class PlayerMovement : MonoBehaviour
         */
         //入力取得
         MyInput();
+
+        if(!wasGrounded && grounded)
+        {
+            readyToJump = false;
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+
+        wasGrounded = grounded;
 
         bool isInput = horizontalInput != 0 || verticalInput!=0;
         bool isRuning = Input.GetKey(KeyCode.LeftShift);
@@ -191,11 +202,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
-            readyToJump = false;
-
             Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
         }
 
     }
