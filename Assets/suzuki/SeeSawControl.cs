@@ -12,7 +12,7 @@ public class rotateBlock : MonoBehaviour
 
     [SerializeField] float ResetAngleTime;
 
-    private float _Time;
+    [SerializeField] private float _Time;
 
     bool ExitPlayer;
 
@@ -21,7 +21,7 @@ public class rotateBlock : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
 
-        _Time = ResetAngleTime;
+       _Time= ResetAngleTime;
 
         ExitPlayer = false;
 
@@ -137,18 +137,21 @@ public class rotateBlock : MonoBehaviour
 
             if (ResetAngleTime <= 0)
             {
-                _Time = ResetAngleTime;
+                Quaternion targetRotation = Quaternion.Euler(0f, 0f, 0f);
+                float speed = 5f; // 1秒での角度
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, speed * Time.deltaTime);
 
-                ExitPlayer = false;
             }
-            else
+            if(transform.rotation == Quaternion.Euler(0f, 0f, 0f))
             {
 
-             
-               
+                ResetAngleTime = _Time;
+
+                ExitPlayer = false;
+
 
             }
-
+            
         }
 
 

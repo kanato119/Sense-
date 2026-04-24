@@ -112,11 +112,15 @@ public class MoveLift : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {   //rb.velocity += CurrentTile / Time.fixedDeltaTime;
 
-
+            /*
  
             Rigidbody rb = collision.rigidbody;
 
             rb.AddForce(CurrentTile / Time.fixedDeltaTime, ForceMode.VelocityChange);
+             */
+
+
+
 
         }
     }
