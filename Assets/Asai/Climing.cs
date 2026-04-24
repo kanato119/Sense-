@@ -34,7 +34,7 @@ public class Climing : MonoBehaviour
     //壁に当たった情報
     private RaycastHit frontWallHit;
     //前に壁があるかどうか
-    private bool wallFront;
+    public bool wallFront;
     //実査の壁との角度
     private float wallLookAngle;
 
@@ -91,20 +91,54 @@ public class Climing : MonoBehaviour
         }
     }
     */
+    
     private void WallCheck()
     {
         Vector3 origin = transform.position + Vector3.up * wallCheckHeight;
 
-        wallFront = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+        RaycastHit hit;
 
+        wallFront = false;
+
+        /*
+        wallFront = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
         if(wallFront)
         {
             wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
         }
 
+        */
+        //bool rayHit = Physics.Raycast(origin, orientaion.forward, out frontWallHit,detectionLength, whatIsWall);
+        //bool sphereHit = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
+
+        if(Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out hit, detectionLength, whatIsWall))
+        {
+            wallFront = true;
+
+            frontWallHit = hit;
+        }
+
+        else
+        {
+
+            Collider[] hits = Physics.OverlapSphere(origin + orientaion.forward * 0.3f, sphereCastRadius, whatIsWall);
+
+            if (hits.Length > 0)
+            {
+                wallFront = true;
+
+                frontWallHit.point = hits[0].ClosestPoint(origin);
+                frontWallHit.normal = (origin - frontWallHit.point).normalized;
+            }
+        }
+
+        if (wallFront)
+        {
+            wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
+        }
 
     }
-
+    
      IEnumerator ClimbLedge()
     {
         climbing = true;
@@ -163,7 +197,10 @@ public class Climing : MonoBehaviour
 
         //particle effect
     }
+
     */
+
+
     private void OnDrawGizmos()
     {
         if (orientaion == null) return;
