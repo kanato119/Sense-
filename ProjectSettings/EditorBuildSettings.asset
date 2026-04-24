@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/GameData/stage1.unity
     guid: d3f87517e55b659429f53dddd3c0a65f
   - enabled: 1
+    path: Assets/kozasa/LoadingScene.unity
+    guid: 1dc71232adfee3f4faae310c37611056
+  - enabled: 1
     path: Assets/kozasa/GameScene.unity
     guid: 4e1cf8660b7fb8845b4e3668ba9da1b4
   - enabled: 0
