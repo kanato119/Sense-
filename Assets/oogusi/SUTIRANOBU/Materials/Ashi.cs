@@ -11,7 +11,8 @@ public class Ashi : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Instantiate(pepperPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject obj = Instantiate(pepperPrefab, spawnPoint.position, Quaternion.identity);
+            Destroy(obj, 15f);
         }
     }
 }
