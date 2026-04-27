@@ -50,7 +50,7 @@ public class Loadingmanager : MonoBehaviour
         async.allowSceneActivation = false;
 
         // 最低表示時間
-        float minTime = 2.0f;
+        float minTime = 1.0f;
         float timer = 0f;
 
         while (async.progress<0.9f||timer<minTime)
