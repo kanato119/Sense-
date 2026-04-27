@@ -1581,7 +1581,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warp (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3772980746571862600, guid: 9bcb144598298294db6eef8aa0df0665, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2346,7 +2347,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3772980746571862600, guid: 9bcb144598298294db6eef8aa0df0665, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2550,7 +2552,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3772980746571862600, guid: 9bcb144598298294db6eef8aa0df0665, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3569,7 +3572,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warp (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3772980746571862600, guid: 9bcb144598298294db6eef8aa0df0665, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7060,11 +7064,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2699310318660785593, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 2699310318660785593, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 430.3475
+      value: 436.3
       objectReference: {fileID: 0}
     - target: {fileID: 2699310318660785593, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
       propertyPath: m_LocalRotation.w
