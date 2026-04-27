@@ -7,7 +7,7 @@ public class Pendulum : MonoBehaviour
 {
 
     [Header("振り子の回転")]
-    public float speed = 1.0f;//振り子の速度
+    public float swingspeed = 1.0f;//振り子の速度
     public float Swinglimit = 70f;//振り子の角度
     public bool randomStart = false;
 
@@ -21,16 +21,15 @@ public class Pendulum : MonoBehaviour
     public Transform ball;//球
 
     [Header("棒の設定")]
-    public float barLength = 4.0f;
+    public float barLength = 4.0f;//棒の長さ
+    public float barThickness = 0.5f;//棒の太さ
 
-
-
+    [Header("球の設定")]
+    public float ballSize = 1f;       //ボールの大きさ
+    public bool attachBallToBarEnd = true; //棒の先端にボールを合わせるか
 
     private float random = 0;
-
-    private float previousAngle = 0;
-
-    public Vector3 pivotOffset = new Vector3(0f, 2f, 0f);
+    private Vector3 startPos;
 
     void Awake()
     {
@@ -39,18 +38,53 @@ public class Pendulum : MonoBehaviour
             random = Random.Range(0f, 1f);
     }
 
-    private void Update()
+    private void Start()
     {
-        float angle = Swinglimit * Mathf.Sin(Time.time + random * speed);
-        float deltaAngle = angle - previousAngle;
-
-        Vector3 pivot = transform.TransformPoint(pivotOffset);
-
-        transform.RotateAround(pivot, transform.forward, deltaAngle);
-
-        previousAngle = angle;
-
+        startPos = transform.position;
+        AdjustParts();
     }
 
+    private void Update()
+    {
+        float angle = Swinglimit * Mathf.Sin(Time.time + random * swingspeed)*swingspeed;
+        transform.localRotation = Quaternion.Euler(0f, 0f, angle);
 
+
+        // 親オブジェクトの移動
+        Vector3 dir = moveDirection.normalized;
+        float move = Mathf.Sin(Time.time * moveSpeed) * moveRange;
+        transform.position = startPos + dir * move;
+
+    }   
+
+    private void OnValidate()
+    {
+
+        AdjustParts();
+    }
+
+    private void AdjustParts()
+    {
+        if (bar != null)
+        {
+            // 棒の大きさ
+            bar.localScale = new Vector3(barThickness, barLength, barThickness);
+
+            // 棒の上端が親(PendulumRoot)に来るようにする
+            bar.localPosition = new Vector3(0f, -barLength / 2f, 0f);
+        }
+
+        if (ball != null)
+        {
+            // 球の大きさ
+            ball.localScale = new Vector3(ballSize, ballSize, ballSize);
+
+            // 棒の下端のさらに球半径ぶん下に置く
+            ball.localPosition = new Vector3(0f, -barLength - ballSize / 2f, 0f);
+        }
+    }
 }
+
+
+
+
