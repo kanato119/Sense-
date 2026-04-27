@@ -31,6 +31,8 @@ public class Pendulum : MonoBehaviour
     private float random = 0;
     private Vector3 startPos;
 
+    private MeshCollider meshCol;
+
     void Awake()
     {
         if (randomStart)
@@ -38,9 +40,18 @@ public class Pendulum : MonoBehaviour
             random = Random.Range(0f, 1f);
     }
 
+    
+
     private void Start()
     {
-        startPos = transform.position;
+        //meshCol = GetComponent<MeshCollider>();
+
+        //if (meshCol != null)
+        //{
+        //    // MeshCollider を無効化
+        //    meshCol.enabled = false;
+        //    }
+            startPos = transform.position;
         AdjustParts();
     }
 
