@@ -21,34 +21,35 @@ public class ChangeSceneStage : MonoBehaviour
     public void ChengeScene(int index)
     {
 
-        StartCoroutine(Change(index));
+        SceneManager.LoadScene(SceneNames[index]);
+       // StartCoroutine(Change(index));
 
     }
 
-    IEnumerator Change(int index)
-    {
-        Debug.Log("① Change開始");
+    //IEnumerator Change(int index)
+  //  {
+        //Debug.Log("① Change開始");
 
-        yield return StartCoroutine(FadeManager.instance.FadeOut());
+        //yield return StartCoroutine(FadeManager.instance.FadeOut());
 
-        Debug.Log("② Fade終了");
+        //Debug.Log("② Fade終了");
 
-        // シーン名チェック
-        if (SceneNames == null || SceneNames.Length <= index || string.IsNullOrEmpty(SceneNames[index]))
-        {
+        //// シーン名チェック
+        //if (SceneNames == null || SceneNames.Length <= index || string.IsNullOrEmpty(SceneNames[index]))
+        //{
 
-            Debug.LogError("シーン名が設定されていない");
-            yield break;
+        //    Debug.LogError("シーン名が設定されていない");
+        //    yield break;
 
-        }
+        //}
 
-            Loadingmanager.nextScene = SceneNames[index];
-        // 読み込むシーン
+        //    Loadingmanager.nextScene = SceneNames[index];
+        //// 読み込むシーン
 
-        Debug.Log("③ nextSceneセット: " + SceneNames[index]);
+        // Debug.Log("③ nextSceneセット: " + SceneNames[index]);
 
-        SceneManager.LoadScene("LoadingScene");
+        //SceneManager.LoadScene(SceneNames[index]);
 
 
-    }
+   // }
 }

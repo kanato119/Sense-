@@ -828,6 +828,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4409023087488674130, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
+      propertyPath: runSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409023087488674130, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
+      propertyPath: jumpForce
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409023087488674130, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
+      propertyPath: jumpCooldown
+      value: 0.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
