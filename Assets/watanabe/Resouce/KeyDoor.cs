@@ -15,7 +15,7 @@ public class KeyDoor : MonoBehaviour
     [Header("開閉設定")]
     public float openAngle = 90f;     // 開く角度
     public float openSpeed = 3f;      // 開く速さ
-    public KeyCode openKey = KeyCode.E;
+    public KeyCode openKey = KeyCode.R;
 
     [Header("鍵設定")]
     public bool needKey = true;       // 鍵が必要か
