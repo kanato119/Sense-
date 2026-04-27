@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 2166615047309607563, guid: 13caf4ceeb37d3a4e924096689a9ec9e, type: 3}
       propertyPath: CameraController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1057355472}
     - target: {fileID: 2350556654336977693, guid: 13caf4ceeb37d3a4e924096689a9ec9e, type: 3}
       propertyPath: bestTimeText
       value: 
@@ -810,7 +810,7 @@ PrefabInstance:
     - target: {fileID: 4329765118309094743, guid: b4b56b37609009047bc515343cabc189, type: 3}
       propertyPath: timer
       value: 
-      objectReference: {fileID: 2350556654336977693, guid: 13caf4ceeb37d3a4e924096689a9ec9e, type: 3}
+      objectReference: {fileID: 1433237624}
     - target: {fileID: 4550256163456658165, guid: b4b56b37609009047bc515343cabc189, type: 3}
       propertyPath: m_Name
       value: Clear
@@ -1160,6 +1160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 7384848016420482655, guid: 1ef7792e1608d864dbf271ba2237c684, type: 3}
+      propertyPath: targetCamera
+      value: 
+      objectReference: {fileID: 1057355474}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1408,6 +1412,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18838578, y: 0.55052155, z: 0.056384485}
   m_Center: {x: 0.00016862822, y: 0.27526107, z: -0.000050533763}
+--- !u!114 &1057355472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9065567198745560323, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
+  m_PrefabInstance: {fileID: 2008762180}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8412b7a5bae6006448223632c756d1a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!20 &1057355474 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7797476153375452379, guid: 858351c1642832c4b8ae3577bcf90f14, type: 3}
+  m_PrefabInstance: {fileID: 2008762180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1142689176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1902,6 +1922,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 636740220}
   m_SourcePrefab: {fileID: 100100000, guid: e6758420bb20ab244a05b68ed185d46d, type: 3}
+--- !u!114 &1433237624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2350556654336977693, guid: 13caf4ceeb37d3a4e924096689a9ec9e, type: 3}
+  m_PrefabInstance: {fileID: 62910245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eaf4f7326f8e7d4da286074e919d4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1512348560
 PrefabInstance:
   m_ObjectHideFlags: 0

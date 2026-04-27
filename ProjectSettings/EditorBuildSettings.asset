@@ -6,24 +6,48 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/GameData/StartScene.unity
+    path: Assets/GameData/StartScene  2.unity
     guid: 3c631fcdd2013c2468c235ddc811d8fc
-  - enabled: 1
+  - enabled: 0
     path: Assets/kozasa/StartScene.unity
     guid: 11a1390bc381f80439045c680e0eb465
   - enabled: 0
-    path: Assets/GameData/stage1.unity
-    guid: d3f87517e55b659429f53dddd3c0a65f
+    path: Assets/GameData/Stage1.unity
+    guid: e830bdbc60f3bab4d8c02c065a3f07bf
   - enabled: 0
     path: Assets/kozasa/LoadingScene.unity
     guid: 1dc71232adfee3f4faae310c37611056
-  - enabled: 1
+  - enabled: 0
     path: Assets/kozasa/GameScene.unity
     guid: 4e1cf8660b7fb8845b4e3668ba9da1b4
   - enabled: 0
     path: Assets/GameData/reisyou.unity
     guid: e6cbd0f0d8ca8e448896a2e2693bcfa3
-  - enabled: 1
+  - enabled: 0
     path: Assets/kozasa/ResultScene.unity
     guid: 8a7e1e6eb1c12974588a0183cd629585
+  - enabled: 1
+    path: Assets/GameData/StartScene.unity
+    guid: 7ea77127c7c6da14888a11124e08d603
+  - enabled: 1
+    path: Assets/GameData/Stage1.unity
+    guid: e830bdbc60f3bab4d8c02c065a3f07bf
+  - enabled: 1
+    path: Assets/GameData/Stage2.unity
+    guid: c323915eefdf7e041a60afdb00fdadae
+  - enabled: 1
+    path: Assets/GameData/Stage3.unity
+    guid: a0d2ef124397477418374272894ecf7a
+  - enabled: 1
+    path: Assets/GameData/Stage4.unity
+    guid: a0e946bb25807504dafb6233b9dc384b
+  - enabled: 1
+    path: Assets/GameData/Stage5.unity
+    guid: 4dfb245282b288a40a7700e99d06a93f
+  - enabled: 1
+    path: Assets/GameData/Stage6.unity
+    guid: 85f15e74a5e37014ebf2fff17ca19806
+  - enabled: 1
+    path: Assets/GameData/ResultScene.unity
+    guid: 563b465500b49cb42963012ee39dd4ac
   m_configObjects: {}
