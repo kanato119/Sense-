@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpForce: 42
-  jumpCooldown: 0.5
+  jumpCooldown: 0.1
   fallMutipler: 4
   airMultiplier: 0.3
   runSpeed: 25
@@ -1671,6 +1671,7 @@ MonoBehaviour:
   detectionLength: 0.7
   sphereCastRadius: 0.25
   maxWallLookAngle: 30
+  Climb: 32
   climbDuration: 0.5
   climbHeightOffset: 1.5
   climbForwardOffset: 0.5
@@ -1955,7 +1956,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18e210cd08c0f5c48841e8b2ded94e52, type: 2}
+  - {fileID: 2100000, guid: 8b13712816d4ff8409d219858ec36425, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1994,8 +1995,8 @@ Transform:
   m_GameObject: {fileID: 549643234}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7035684, y: -0, z: -0, w: 0.71062756}
-  m_LocalPosition: {x: -697.3692, y: 40, z: 25.4209}
-  m_LocalScale: {x: 336.29785, y: 384.4884, z: 1}
+  m_LocalPosition: {x: -697.3692, y: 39.9246, z: 17.8628}
+  m_LocalScale: {x: 336.29785, y: 369.38257, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 215532434}
@@ -2935,8 +2936,8 @@ Transform:
   m_GameObject: {fileID: 892125276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -484.2, y: 42, z: -53.3}
-  m_LocalScale: {x: 24.92475, y: 4.0980697, z: 35.622524}
+  m_LocalPosition: {x: -484.7, y: 42, z: -49.432}
+  m_LocalScale: {x: 24.92475, y: 4.0980697, z: 39.55881}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 215532434}
@@ -3258,7 +3259,7 @@ Transform:
   m_GameObject: {fileID: 904496220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -453.5729, y: 42, z: -26.9}
+  m_LocalPosition: {x: -453.6, y: 42, z: -25.5}
   m_LocalScale: {x: 27.177948, y: 4.098074, z: 38.580986}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5379,8 +5380,8 @@ Transform:
   m_GameObject: {fileID: 1801592988}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -397.2, y: 60, z: -17.4}
-  m_LocalScale: {x: 67.276375, y: 2.5858846, z: 61.53494}
+  m_LocalPosition: {x: -397.2, y: 60, z: -18.0935}
+  m_LocalScale: {x: 67.276375, y: 2.5858846, z: 62.919476}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 215532434}

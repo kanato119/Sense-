@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 9
   jumpForce: 35
-  jumpCooldown: 0.4
+  jumpCooldown: 0.3
   fallMutipler: 4
   airMultiplier: 0.3
   runSpeed: 20
