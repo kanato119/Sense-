@@ -21,7 +21,8 @@ public class ChangeSceneStart : MonoBehaviour
     public void ChengeScene2()
     {
         // 読み込むシーン
-        SceneManager.LoadScene("StartScene");
+        Loadingmanager.nextScene = "StartScene";
+        SceneManager.LoadScene("LoadingScene");
         Debug.Log("スタートシーン");
 
     }
