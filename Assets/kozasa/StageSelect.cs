@@ -35,6 +35,8 @@ public class StageSelect : MonoBehaviour
        
         StageSelectUI.SetActive(false);
 
+        Debug.Log("false");
+
     }
 
     public void EndCheck()
@@ -43,6 +45,15 @@ public class StageSelect : MonoBehaviour
         isCheck = true;
 
         CheckPanelUI.SetActive(true);
+
+    }
+
+    public void NoEnd()
+    {
+
+        isCheck = false;
+
+        CheckPanelUI.SetActive(false);
 
     }
 
