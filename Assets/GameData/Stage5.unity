@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 42912222}
   - component: {fileID: 42912221}
   - component: {fileID: 42912220}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 59880823}
   - component: {fileID: 59880822}
   - component: {fileID: 59880821}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 100384686}
   - component: {fileID: 100384685}
   - component: {fileID: 100384684}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 187316851}
   - component: {fileID: 187316850}
   - component: {fileID: 187316849}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 260488866}
   - component: {fileID: 260488865}
   - component: {fileID: 260488864}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 350290732}
   - component: {fileID: 350290731}
   - component: {fileID: 350290730}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 538971556}
   - component: {fileID: 538971555}
   - component: {fileID: 538971554}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ueniwarparu (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1415,7 +1415,7 @@ GameObject:
   - component: {fileID: 624251114}
   - component: {fileID: 624251113}
   - component: {fileID: 624251112}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 695948273}
   - component: {fileID: 695948272}
   - component: {fileID: 695948271}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ueniwarparu
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1920,7 +1920,7 @@ GameObject:
   - component: {fileID: 864387314}
   - component: {fileID: 864387313}
   - component: {fileID: 864387312}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Goal
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2249,7 +2249,7 @@ GameObject:
   - component: {fileID: 924684872}
   - component: {fileID: 924684871}
   - component: {fileID: 924684870}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2354,7 +2354,7 @@ GameObject:
   - component: {fileID: 972958236}
   - component: {fileID: 972958235}
   - component: {fileID: 972958234}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2459,7 +2459,7 @@ GameObject:
   - component: {fileID: 995486822}
   - component: {fileID: 995486821}
   - component: {fileID: 995486820}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2569,7 +2569,7 @@ GameObject:
   - component: {fileID: 1010867952}
   - component: {fileID: 1010867951}
   - component: {fileID: 1010867950}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ueniwarparu (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2674,7 +2674,7 @@ GameObject:
   - component: {fileID: 1031279566}
   - component: {fileID: 1031279565}
   - component: {fileID: 1031279564}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2779,7 +2779,7 @@ GameObject:
   - component: {fileID: 1202222780}
   - component: {fileID: 1202222779}
   - component: {fileID: 1202222778}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ueniwarparu (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2884,7 +2884,7 @@ GameObject:
   - component: {fileID: 1224715569}
   - component: {fileID: 1224715568}
   - component: {fileID: 1224715567}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3296,7 +3296,7 @@ GameObject:
   - component: {fileID: 1519088066}
   - component: {fileID: 1519088065}
   - component: {fileID: 1519088064}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 1620741939}
   - component: {fileID: 1620741938}
   - component: {fileID: 1620741937}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3508,7 +3508,7 @@ GameObject:
   - component: {fileID: 1630866784}
   - component: {fileID: 1630866783}
   - component: {fileID: 1630866782}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3614,7 +3614,7 @@ GameObject:
   - component: {fileID: 1710155603}
   - component: {fileID: 1710155602}
   - component: {fileID: 1710155601}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hakai
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3733,7 +3733,7 @@ GameObject:
   - component: {fileID: 1721250516}
   - component: {fileID: 1721250515}
   - component: {fileID: 1721250514}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3840,7 +3840,7 @@ GameObject:
   - component: {fileID: 1727430731}
   - component: {fileID: 1727430730}
   - component: {fileID: 1727430729}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3946,7 +3946,7 @@ GameObject:
   - component: {fileID: 1853276792}
   - component: {fileID: 1853276791}
   - component: {fileID: 1853276790}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4122,7 +4122,7 @@ GameObject:
   - component: {fileID: 1908943144}
   - component: {fileID: 1908943143}
   - component: {fileID: 1908943142}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4298,7 +4298,7 @@ GameObject:
   - component: {fileID: 1966641065}
   - component: {fileID: 1966641064}
   - component: {fileID: 1966641063}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4508,7 +4508,7 @@ GameObject:
   - component: {fileID: 2007264117}
   - component: {fileID: 2007264116}
   - component: {fileID: 2007264115}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4613,7 +4613,7 @@ GameObject:
   - component: {fileID: 2045502821}
   - component: {fileID: 2045502820}
   - component: {fileID: 2045502819}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4721,7 +4721,7 @@ GameObject:
   - component: {fileID: 2094558397}
   - component: {fileID: 2094558396}
   - component: {fileID: 2094558395}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
