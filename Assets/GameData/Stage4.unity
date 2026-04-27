@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2172223286367116053, guid: b576909ac0a7f984bba4dc89002caec3, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Tile
       objectReference: {fileID: 0}
     - target: {fileID: 5514042141661920659, guid: b576909ac0a7f984bba4dc89002caec3, type: 3}
       propertyPath: LiftPoints.Array.size
