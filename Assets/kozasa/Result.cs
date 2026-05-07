@@ -20,24 +20,24 @@ public class Result : MonoBehaviour
     void DisplayRanking()
     {
 
+        int stage = GetStageNumber();
 
         for (int i = 0; i < 5; i++)
         {
 
-            int stage = GetStageNumber();
 
             float time = PlayerPrefs.GetFloat("Stage" + stage+ "_Rank" + i, Mathf.Infinity);
 
             if (time == Mathf.Infinity)
             {
 
-                rankTexts[i].text = (i + 1) + "位 : ---";
+                rankTexts[i].text = (i + 1) + "  : ---";
 
             }
             else
             {
 
-                rankTexts[i].text = (i + 1) + "位 : " + time.ToString("F2") + "s";
+                rankTexts[i].text = (i + 1) + "  : " + time.ToString("F2") + "s";
 
             }
         }
@@ -73,7 +73,7 @@ public class Result : MonoBehaviour
     int GetStageNumber()
     {
 
-        int stage = PlayerPrefs.GetInt("StageIndex", 1);
+        int stage = PlayerPrefs.GetInt("StageIndex", -1);
 
         if (stage == -1)
         {
