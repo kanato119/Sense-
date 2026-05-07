@@ -12,6 +12,10 @@ public class KeyItem : MonoBehaviour
     private bool isFollowing = false;
     private Collider keyCollider;
 
+    [Header("SE")]
+    public AudioClip getKeySE;   // 鍵を取った時のSE
+    [Range(0f, 1f)] public float seVolume = 1.0f;
+
     private void Start()
     {
         keyCollider = GetComponent<Collider>();
@@ -51,6 +55,11 @@ public class KeyItem : MonoBehaviour
             if (keyHolder != null)
             {
                 keyHolder.hasKey = true;
+            }
+
+            if (getKeySE != null)
+            {
+                AudioSource.PlayClipAtPoint(getKeySE, transform.position, seVolume);
             }
 
             if (keyCollider != null)

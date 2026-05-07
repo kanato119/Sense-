@@ -7,8 +7,12 @@ public class BlowerFan : MonoBehaviour
    
     public Vector3 blowDirection = Vector3.right;
     public float blowPower = 20f;
-    public float onTime = 3f;
-    public float offTime = 3f;
+    public float onTime = 4f;
+    public float offTime = 5f;
+
+    [Header("SE")]
+    public AudioClip WindSE;   // 風がでている時のSE
+    [Range(0f, 1f)] public float seVolume = 1.0f;
 
     public Vector3 boxSize = new Vector3(2f, 2f, 5f); //風の範囲
     public Vector3 boxOffset = new Vector3 (0f, 0f, 2.5f);
@@ -25,6 +29,14 @@ public class BlowerFan : MonoBehaviour
 
         if (isOn)
         {
+
+            // ドアを開けた時のSEを鳴らす
+            if (WindSE != null)
+            {
+                AudioSource.PlayClipAtPoint(WindSE, transform.position, seVolume);
+            }
+
+
             if (timer >= onTime)
             {
                 isOn = false;
