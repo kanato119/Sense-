@@ -26,7 +26,7 @@ public class Result : MonoBehaviour
         {
 
 
-            float time = PlayerPrefs.GetFloat("Stage" + stage+ "_Rank" + i, Mathf.Infinity);
+            float time = PlayerPrefs.GetFloat("Stage" + stage + "_Rank" + i, Mathf.Infinity);
 
             if (time == Mathf.Infinity)
             {
