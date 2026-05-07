@@ -614,6 +614,8 @@ MonoBehaviour:
   blowPower: 800
   onTime: 3
   offTime: 3
+  WindSE: {fileID: 0}
+  seVolume: 1
   boxSize: {x: 2, y: 2, z: 50}
   boxOffset: {x: 0, y: 0, z: 25.33}
 --- !u!65 &432040384
@@ -1548,6 +1550,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   speed: 10
   KeepDistance: 5
+  getKeySE: {fileID: 0}
+  seVolume: 1
 --- !u!136 &1244564552
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2475,6 +2479,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4602976997493607073, guid: 6ce9e9cd62cec384c8aab40df95c173e, type: 3}
+      propertyPath: WindSE
+      value: 
+      objectReference: {fileID: 8300000, guid: cf8a5753732e1b44eb792fc574788af1, type: 3}
+    - target: {fileID: 4602976997493607073, guid: 6ce9e9cd62cec384c8aab40df95c173e, type: 3}
+      propertyPath: onTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602976997493607073, guid: 6ce9e9cd62cec384c8aab40df95c173e, type: 3}
+      propertyPath: offTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602976997493607073, guid: 6ce9e9cd62cec384c8aab40df95c173e, type: 3}
+      propertyPath: seVolume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5378709414436662195, guid: 6ce9e9cd62cec384c8aab40df95c173e, type: 3}
       propertyPath: m_Name
       value: Metro Fan
@@ -2602,6 +2622,14 @@ PrefabInstance:
       propertyPath: Key
       value: 
       objectReference: {fileID: 374289202539239143}
+    - target: {fileID: 3874659985549111539, guid: 4849eeb2bdd8eb74782bb93663dea775, type: 3}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874659985549111539, guid: 4849eeb2bdd8eb74782bb93663dea775, type: 3}
+      propertyPath: openDoorSE
+      value: 
+      objectReference: {fileID: 8300000, guid: a002d12811a7e5b4996cfec367b8b9de, type: 3}
     - target: {fileID: 3874659985549111539, guid: 4849eeb2bdd8eb74782bb93663dea775, type: 3}
       propertyPath: doorRootCollider
       value: 
@@ -2733,6 +2761,14 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 207503760}
+    - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
+      propertyPath: getKeySE
+      value: 
+      objectReference: {fileID: 8300000, guid: 73d084c9e92217f45bb8e907737d5f11, type: 3}
+    - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
