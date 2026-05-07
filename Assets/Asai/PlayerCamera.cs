@@ -25,11 +25,18 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float xViewpointControl;
     [SerializeField] float yViewpointControl;
 
+    [SerializeField] float BaseSensi;
+
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+
+        float savedValue = PlayerPrefs.GetFloat("SavedSliderValue", mouseSetSensiX);
+        SetSensi(savedValue);
     }
 
     // Update is called once per frame
@@ -48,5 +55,11 @@ public class PlayerCamera : MonoBehaviour
         transform.LookAt(target.position + Vector3.up * height);
 
         orientation.rotation = Quaternion.Euler(0, xViewpointControl, 0);
+    }
+
+    public void SetSensi(float value)
+    {
+        mouseSetSensiX = value * BaseSensi;
+        mouseSetSensiY = value * BaseSensi;
     }
 }
