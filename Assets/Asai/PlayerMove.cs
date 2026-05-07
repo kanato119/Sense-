@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rayの長さ")]
     [SerializeField] float playerHeight;
 
+    [SerializeField] AudioClip JumpSE;
+
     //地面に触れいるかどうか
     public bool grounded;
 
@@ -58,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit hit;
 
+    AudioSource audio;
+
     Animator animator;
 
     Rigidbody rb;
@@ -69,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+
         rb = GetComponent<Rigidbody>();
 
         animator = GetComponent<Animator>();
@@ -288,6 +294,8 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
         animator.SetTrigger("Jump");
+
+        audio.PlayOneShot(JumpSE);
     }
 
     private void ResetJump()
