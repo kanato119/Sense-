@@ -25,6 +25,10 @@ public class KeyDoor : MonoBehaviour
     [Header("プレイヤータグ")]
     public string playerTag = "Player";
 
+    [Header("SE")]
+    public AudioClip openDoorSE;   // ドアを開けた時のSE
+    [Range(0f, 1f)] public float seVolume = 1.0f;
+
     [SerializeField] GameObject Key;
 
     private bool isPlayerInside = false;
@@ -131,6 +135,12 @@ public class KeyDoor : MonoBehaviour
         if (Key != null)
         {
             Key.SetActive(false);
+        }
+
+        // ドアを開けた時のSEを鳴らす
+        if (openDoorSE != null)
+        {
+            AudioSource.PlayClipAtPoint(openDoorSE, transform.position, seVolume);
         }
 
         isOpen = true;

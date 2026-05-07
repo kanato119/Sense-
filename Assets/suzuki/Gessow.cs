@@ -12,9 +12,15 @@ public class Gessow : MonoBehaviour
 
     [SerializeField] float Time;
 
+    [SerializeField] AudioClip GessowSE;
+    private AudioSource audioSource;
     private void Start()
     {
         Sumi.SetActive(false);
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     // Start is called before the first frame update
@@ -28,6 +34,8 @@ public class Gessow : MonoBehaviour
 
         Sumi.SetActive(true);
         Invoke("OffImg", 2.0f);
+        audioSource.PlayOneShot(GessowSE);
+
 
     }
 
