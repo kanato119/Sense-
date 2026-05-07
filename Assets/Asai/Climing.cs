@@ -153,24 +153,45 @@ public class Climing : MonoBehaviour
 
         Vector3 startPos = transform.position;
 
-        Vector3 targetPos = 
-            frontWallHit.point + 
-            frontWallHit.normal * 0.3f + 
+        Vector3 upPos =
+            frontWallHit.point +
+            frontWallHit.normal * 0.3f +
             Vector3.up * climbHeightOffset;
 
         float time = 0;
 
         while (time < climbDuration)
         {
-            transform.position = Vector3.Lerp(startPos, targetPos, time / climbDuration);
+            transform.position = Vector3.Lerp(startPos, upPos, time / climbDuration);
 
             time += Time.deltaTime;
             yield return null;
         }
 
-       transform.position = targetPos;
+       transform.position = upPos;
+
+        yield return new WaitForSeconds(0.1f);
+
+        Vector3 forwarPos =
+                transform.position + 
+                orientaion.forward * climbForwardOffset;
+
+         time = 0;
+
+        while (time < climbDuration * 0.5f)
+        {
+            transform.position = Vector3.Lerp(upPos, forwarPos, time / (climbDuration* 0.5f));
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = forwarPos;
 
         rb.isKinematic = false;
+
+        yield return new WaitForSeconds(0.3f);
+         
         pm.enabled = true;
 
         climbing = false;
