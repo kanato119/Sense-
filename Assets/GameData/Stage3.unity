@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1433237624}
+    - target: {fileID: 4329765118309094743, guid: b4b56b37609009047bc515343cabc189, type: 3}
+      propertyPath: StageNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4550256163456658165, guid: b4b56b37609009047bc515343cabc189, type: 3}
       propertyPath: m_Name
       value: Clear
