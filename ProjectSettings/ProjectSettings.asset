@@ -739,6 +739,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     Android: __MICROSPLAT__
     Standalone: __MICROSPLAT__
+    WebGL: __MICROSPLAT__
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
