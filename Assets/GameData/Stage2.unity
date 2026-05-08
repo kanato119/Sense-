@@ -3160,6 +3160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 959673467}
     m_Modifications:
+    - target: {fileID: 2897954983011622761, guid: f282c8b751c88d04db820837074ab3ea, type: 3}
+      propertyPath: jumpBoardSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ca838bf73fda18647960dfd3719b587b, type: 3}
     - target: {fileID: 3117127240968716581, guid: f282c8b751c88d04db820837074ab3ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -94.169876
