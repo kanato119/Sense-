@@ -1849,6 +1849,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 485513586}
+    - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
+      propertyPath: getKeySE
+      value: 
+      objectReference: {fileID: 8300000, guid: 73d084c9e92217f45bb8e907737d5f11, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2425,6 +2429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9123102684845808498, guid: 24ff22dd187245242a4330bcbf9a5bbe, type: 3}
+      propertyPath: openDoorSE
+      value: 
+      objectReference: {fileID: 8300000, guid: a002d12811a7e5b4996cfec367b8b9de, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2496,6 +2504,10 @@ PrefabInstance:
       propertyPath: Key
       value: 
       objectReference: {fileID: 95461667}
+    - target: {fileID: 9123102684845808498, guid: 24ff22dd187245242a4330bcbf9a5bbe, type: 3}
+      propertyPath: openDoorSE
+      value: 
+      objectReference: {fileID: 8300000, guid: a002d12811a7e5b4996cfec367b8b9de, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4903,6 +4915,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Setting
       objectReference: {fileID: 0}
+    - target: {fileID: 452748449544355608, guid: bd02512ea6d43874dbef14e9a67c4795, type: 3}
+      propertyPath: m_Value
+      value: 0.525
+      objectReference: {fileID: 0}
+    - target: {fileID: 452748449544355608, guid: bd02512ea6d43874dbef14e9a67c4795, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 452748449544355608, guid: bd02512ea6d43874dbef14e9a67c4795, type: 3}
+      propertyPath: m_MinValue
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5629571107526498263, guid: bd02512ea6d43874dbef14e9a67c4795, type: 3}
       propertyPath: player
       value: 
@@ -5264,6 +5288,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 414643357}
     m_Modifications:
+    - target: {fileID: 815615350414412188, guid: 2aef725402d1e914a94f3d0d4f638533, type: 3}
+      propertyPath: WindSE
+      value: 
+      objectReference: {fileID: 8300000, guid: cf8a5753732e1b44eb792fc574788af1, type: 3}
     - target: {fileID: 815615350414412188, guid: 2aef725402d1e914a94f3d0d4f638533, type: 3}
       propertyPath: onTime
       value: 5
@@ -6108,6 +6136,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 485513586}
+    - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
+      propertyPath: getKeySE
+      value: 
+      objectReference: {fileID: 8300000, guid: 73d084c9e92217f45bb8e907737d5f11, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
