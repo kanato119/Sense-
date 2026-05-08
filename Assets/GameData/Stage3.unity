@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28849813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28849814}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &28849814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28849813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.1, y: 76.72261, z: 16.982756}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &55503673 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 69253966784947098, guid: 5b6bba96cbb9394449bae1618a12e486, type: 3}
@@ -383,7 +414,7 @@ MonoBehaviour:
   LiftPoints:
   - {fileID: 192996390}
   - {fileID: 286232762}
-  - {fileID: 0}
+  - {fileID: 28849814}
   LiftSpeed: 3
   LiftNum: 0
   OnPlayer: 0
@@ -2287,6 +2318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Setting
       objectReference: {fileID: 0}
+    - target: {fileID: 5629571107526498263, guid: bd02512ea6d43874dbef14e9a67c4795, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1378358966}
     - target: {fileID: 6562148004951101703, guid: bd02512ea6d43874dbef14e9a67c4795, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2964,3 +2999,4 @@ SceneRoots:
   - {fileID: 1541081076}
   - {fileID: 1324712234}
   - {fileID: 912911960}
+  - {fileID: 28849814}
