@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PouseManager : MonoBehaviour
 {
@@ -16,10 +19,40 @@ public class PouseManager : MonoBehaviour
     {
 
 
+
+
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        GameObject PoseObj =
+        GameObject.Find("Pause");
+
+        if (PoseObj != null)
+        {
+
+            pauseMenuUI = PoseObj;
+
+        }
+    }
+
 
     public void PauseGame()
     {
+
+        Debug.Log(pauseMenuUI);
         // パネルを表示させてゲームを止める
         Time.timeScale = 0f;
         isPaused = true;
@@ -70,15 +103,15 @@ public class PouseManager : MonoBehaviour
 
         }
 
-        // スペースを押したらタイトル画面に戻る(仮)
-        if (isPaused&&Input.GetKeyDown(KeyCode.Space))
-        {
+        //// スペースを押したらタイトル画面に戻る(仮)
+        //if (isPaused&&Input.GetKeyDown(KeyCode.Space))
+        //{
 
-            ChangeSceneStart changescene = GetComponent<ChangeSceneStart>();
+        //    ChangeSceneStart changescene = GetComponent<ChangeSceneStart>();
 
-            changescene.ChengeScene2();
+        //    changescene.ChengeScene2();
 
-        }
+        //}
 
         //Debug.Log(Time.timeScale);
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
@@ -18,21 +19,38 @@ public class TimeManager : MonoBehaviour
     void Awake()
     {
 
-        if (Instance != null && Instance != this)
+        if (Instance == null)
         {
 
-            Destroy(gameObject);
-            return;
+            Instance = this;
+
+            DontDestroyOnLoad(gameObject);
+
+
 
         }
+        else {
+
+            Destroy(gameObject);
+
+        }
+
+        //if (Instance != null && Instance != this)
+        //{
+
+        //    Destroy(gameObject);
+        //    return;
+
+        //}
+
 
         // ベストタイムを画面に表示する
         // DisplayBestTime();
 
         // インスタンスを登録
-        Instance = this;
+        //Instance = this;
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
         //if (currentTimeText == null)
         //{
@@ -40,12 +58,74 @@ public class TimeManager : MonoBehaviour
 
         //}
 
+        GameObject obj = GameObject.Find("Time");
+
+        Debug.Log(obj);
+
 
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        GameObject currentObj =
+    GameObject.Find("Time");
+
+        if (currentObj != null)
+        {
+            currentTimeText =
+                currentObj.GetComponentInChildren<TextMeshProUGUI>();
+
+            Debug.Log(currentTimeText);
+        }
+
+        //Debug.Log(currentObj);
+
+        // Debug.Log(currentObj.GetComponentInChildren<TextMeshProUGUI>());
+
+        GameObject BestObj =
+        GameObject.Find("BestTime");
+
+        if (BestObj != null)
+        {
+            bestTimeText =
+                BestObj.GetComponentInChildren<TextMeshProUGUI>();
+
+            Debug.Log(currentTimeText);
+        }
+
+        if (bestTimeText != null)
+        {
+            DisplayBestTime();
+        }
+
+        //currentTimeText =
+        //    GameObject.Find("Time")
+        //    .GetComponentInChildren<TextMeshProUGUI>();
+
+        //bestTimeText =
+        //   GameObject.Find("BestTime")
+        //   .GetComponentInChildren<TextMeshProUGUI>();
+
+        //DisplayBestTime();
+    }
     // Update is called once per frame
     void Update()
     {
+
+        
+
 
         // タイマーを進める
         if (isTimer)
@@ -74,7 +154,7 @@ public class TimeManager : MonoBehaviour
         Debug.Log(resultTime);
 
         SaveTime();
-        SaveRanking(); 
+        SaveRanking();
 
     }
 
@@ -92,7 +172,9 @@ public class TimeManager : MonoBehaviour
 
     //}
 
-    public float SaveTime()
+    
+
+public float SaveTime()
     {
         // ベストタイム
         float bestTime = PlayerPrefs.GetFloat("BestTime", Mathf.Infinity);
@@ -114,12 +196,19 @@ public class TimeManager : MonoBehaviour
     {
         // 画面に表示
 
-        float bestTime = PlayerPrefs.GetFloat("BestTime", 0f);
+        if (bestTimeText == null)
+        {
+            Debug.Log("bestTimeText が null");
+            return;
+        }
+
+        float bestTime =
+            PlayerPrefs.GetFloat("BestTime", 0f);
 
         if (bestTime == Mathf.Infinity) return;
 
-        bestTimeText.text="Best : "+bestTime.ToString("F2") + "s";
-
+        bestTimeText.text =
+            "Best : " + bestTime.ToString("F2") + "s";
     }
 
     void SaveRanking()
@@ -129,7 +218,14 @@ public class TimeManager : MonoBehaviour
 
         List<float>ranking=new List<float>();
 
-        for(int i = 0; i < 5; i++)
+           // TextMeshProUGUI currentTime = GameObject.Find("CurrentTime").GetComponent<TextMeshProUGUI>();
+
+           // TextMeshProUGUI bestTime = GameObject.Find("BestTime").GetComponent<TextMeshProUGUI>();
+
+
+
+
+        for (int i = 0; i < 5; i++)
         {
 
             float time = PlayerPrefs.GetFloat("Stage" + stage + "_Rank" + i, Mathf.Infinity);
