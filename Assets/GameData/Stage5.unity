@@ -513,7 +513,7 @@ PrefabInstance:
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1869901957}
+      objectReference: {fileID: 0}
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: getKeySE
       value: 
@@ -700,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1869901957}
+      objectReference: {fileID: 0}
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: getKeySE
       value: 
@@ -2016,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1869901957}
+      objectReference: {fileID: 0}
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: getKeySE
       value: 
@@ -2220,6 +2220,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 2350556654336977693, guid: 13caf4ceeb37d3a4e924096689a9ec9e, type: 3}
+    - target: {fileID: 4329765118309094743, guid: b4b56b37609009047bc515343cabc189, type: 3}
+      propertyPath: StageNumber
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4550256163456658165, guid: b4b56b37609009047bc515343cabc189, type: 3}
       propertyPath: m_Name
       value: Clear
@@ -3795,7 +3799,7 @@ PrefabInstance:
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1869901957}
+      objectReference: {fileID: 0}
     - target: {fileID: 8423567845167252044, guid: 8c46bcda131643d438d7fa640c855206, type: 3}
       propertyPath: getKeySE
       value: 
@@ -4791,11 +4795,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1094544807}
   m_SourcePrefab: {fileID: 100100000, guid: 4c154c7ca94404f499694edd28e4c834, type: 3}
---- !u!4 &1869901957 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6336320452079006218, guid: 4c154c7ca94404f499694edd28e4c834, type: 3}
-  m_PrefabInstance: {fileID: 1869901956}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1877542578
 PrefabInstance:
   m_ObjectHideFlags: 0
