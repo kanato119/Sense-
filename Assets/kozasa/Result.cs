@@ -7,26 +7,50 @@ using UnityEngine.SceneManagement;
 
 public class Result : MonoBehaviour
 {
-
+    
     public TextMeshProUGUI[] rankTexts; // 5個用意
+    const int RANK_COUNT = 5;
 
     void Start()
     {
 
+        TimeManager.Instance.SaveTime();
+
+
+
         DisplayRanking();
 
     }
+
+    //void SaveResult()
+    //{
+
+    //    List<float> times = new List<float>();
+
+    //    for (int i = 0; i < RANK_COUNT; i++)
+    //    {
+
+    //    }
+
+    //}
+
 
     void DisplayRanking()
     {
 
         int stage = GetStageNumber();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < RANK_COUNT; i++)
         {
-
+           
 
             float time = PlayerPrefs.GetFloat("Stage" + stage + "_Rank" + i, Mathf.Infinity);
+
+            Debug.Log("表示:" + time);
+
+            Debug.Log(stage);
+
+            // time = TimeManager.Instance.SaveTime();
 
             if (time == Mathf.Infinity)
             {
@@ -41,8 +65,6 @@ public class Result : MonoBehaviour
 
             }
         }
-
-       
 
 
     }
@@ -59,7 +81,7 @@ public class Result : MonoBehaviour
     void ResetRanking()
     {
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < RANK_COUNT; i++)
         {
 
             int stage = GetStageNumber();

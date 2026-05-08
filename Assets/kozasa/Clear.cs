@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Clear : MonoBehaviour
 {
-    [SerializeField] TimeManager timer;
+    // [SerializeField] TimeManager timer;
+    [SerializeField] int StageNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +41,10 @@ public class Clear : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("ゴール");
-        timer.StopTimer();
-        Time.timeScale = 0f;
+        PlayerPrefs.SetInt("StageIndex", StageNumber);
+        TimeManager.Instance.StopTimer();
         SceneManager.LoadScene("ResultScene");
+       // Time.timeScale = 0f;
 
 
     }
