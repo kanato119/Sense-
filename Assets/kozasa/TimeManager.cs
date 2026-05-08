@@ -18,6 +18,14 @@ public class TimeManager : MonoBehaviour
     void Awake()
     {
 
+        if (Instance != null && Instance != this)
+        {
+
+            Destroy(gameObject);
+            return;
+
+        }
+
         // ベストタイムを画面に表示する
         // DisplayBestTime();
 
@@ -25,6 +33,13 @@ public class TimeManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(this.gameObject);
+
+        //if (currentTimeText == null)
+        //{
+        //    currentTimeText=GetComponent<TextMeshProUGUI>();
+
+        //}
+
 
     }
 
@@ -37,7 +52,7 @@ public class TimeManager : MonoBehaviour
         {
 
             currentTime += Time.deltaTime;
-
+            
             currentTimeText.text = "Time : " + currentTime.ToString("F2") + "s";
 
         }
