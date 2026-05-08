@@ -11,15 +11,21 @@ public class TimeManager : MonoBehaviour
     public bool isTimer = true;    // タイマーのオンオフ
     public TextMeshProUGUI currentTimeText; // 現在のタイムの表示UI
     public TextMeshProUGUI bestTimeText;    // ベストタイム表示UI
+    public static TimeManager Instance {  get; private set; }
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         // ベストタイムを画面に表示する
-       // DisplayBestTime();
-        
+        // DisplayBestTime();
+
+        // インスタンスを登録
+        Instance = this;
+
+        DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Update is called once per frame
@@ -50,24 +56,28 @@ public class TimeManager : MonoBehaviour
 
         }
 
+        Debug.Log(resultTime);
+
         SaveTime();
-         SaveRanking(); 
+        SaveRanking(); 
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    //private void OnTriggerEnter(Collider other)
+    //{
 
-        if (other.CompareTag("Player"))
-        {
+    //    if (other.CompareTag("Player"))
+    //    {
 
-            StopTimer();
+    //        Debug.Log("Goal");
 
-        }
+    //        StopTimer();
 
-    }
+    //    }
 
-    private void SaveTime()
+    //}
+
+    public float SaveTime()
     {
         // ベストタイム
         float bestTime = PlayerPrefs.GetFloat("BestTime", Mathf.Infinity);
@@ -81,6 +91,8 @@ public class TimeManager : MonoBehaviour
 
         DisplayBestTime();
 
+
+        return bestTime;
     }
 
     private void DisplayBestTime()
@@ -98,12 +110,14 @@ public class TimeManager : MonoBehaviour
     void SaveRanking()
     {
 
+        int stage = PlayerPrefs.GetInt("StageIndex", 1);
+
         List<float>ranking=new List<float>();
 
         for(int i = 0; i < 5; i++)
         {
 
-            float time = PlayerPrefs.GetFloat("Rank" + i, Mathf.Infinity);
+            float time = PlayerPrefs.GetFloat("Stage" + stage + "_Rank" + i, Mathf.Infinity);
             ranking.Add(time);
         }
 
@@ -116,8 +130,16 @@ public class TimeManager : MonoBehaviour
         // 上位5つ保存
         for (int i = 0; i < 5; i++)
         {
-            PlayerPrefs.SetFloat("Rank" + i, ranking[i]);
+            PlayerPrefs.SetFloat("Stage" + stage + "_Rank" + i, ranking[i]);
+
+            Debug.Log("保存"+ranking[i]);
+
         }
+
+        Debug.Log(stage);
+
+
+        PlayerPrefs.Save();
 
     }
 
