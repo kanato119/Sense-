@@ -518,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 794456501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.9, y: -12, z: -65.9047}
+  m_LocalPosition: {x: 45.1, y: -12, z: -65.9047}
   m_LocalScale: {x: 134.45, y: 4.2509, z: 93.320526}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1836,6 +1836,7 @@ MonoBehaviour:
   BuletLate: 1
   Speed: 50
   Direction: {x: 0, y: 0, z: 0}
+  audioClip: {fileID: 8300000, guid: a8c29c86d3c042b408c7c5db0b0f3b3d, type: 3}
 --- !u!65 &2055307228
 BoxCollider:
   m_ObjectHideFlags: 0

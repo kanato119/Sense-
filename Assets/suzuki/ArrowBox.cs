@@ -19,13 +19,21 @@ public class ArrowBox : MonoBehaviour
 
     [SerializeField] Vector3 Direction;
 
-   
+    [SerializeField] AudioClip audioClip;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         //numに発射レートを入れる
         Num = BuletLate;
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.volume = 0.5f;
+      
     }
 
     // Update is called once per frame
@@ -37,6 +45,7 @@ public class ArrowBox : MonoBehaviour
 
         if (Num <= 0)
         {
+        audioSource.PlayOneShot(audioClip);
 
             //BuletPositionの座標を取得
             Vector3 BuletPoint = BuletPosition.position;
