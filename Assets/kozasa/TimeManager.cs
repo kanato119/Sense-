@@ -34,11 +34,11 @@ public class TimeManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        if (currentTimeText != null)
-        {
-            currentTimeText=GetComponent<TextMeshProUGUI>();
+        //if (currentTimeText == null)
+        //{
+        //    currentTimeText=GetComponent<TextMeshProUGUI>();
 
-        }
+        //}
 
 
     }
