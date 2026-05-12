@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,14 +9,17 @@ using UnityEngine.UI;
 public class PouseManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject pauseMenuUI;
+    [SerializeField]public GameObject pauseMenuUI;
     [SerializeField] private MonoBehaviour CameraController;
+
+    public static TimeManager Instance { get; private set; }
 
     // [SerializeField] GameObject CameraObject;
     private bool isPaused = false;
 
-    // Start is called before the first frame update
-    void Start()
+
+        // Start is called before the first frame update
+        void Start()
     {
 
 
@@ -42,10 +46,17 @@ public class PouseManager : MonoBehaviour
 
         if (PoseObj != null)
         {
-
             pauseMenuUI = PoseObj;
 
+            Debug.Log("PauseUI取得成功");
         }
+        else
+        {
+            Debug.Log("PauseUIが見つからない");
+        
+        }
+
+
     }
 
 
