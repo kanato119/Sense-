@@ -39,7 +39,7 @@ public class StartWarp : MonoBehaviour
         // 生成位置が未設定なら自分の位置を使う
         Quaternion rotation = spawnPoint != null ? spawnPoint.rotation : Quaternion.identity;
 
-        Instantiate(prefab, position, rotation);
+      //  Instantiate(prefab, position, rotation);
         Debug.Log($"{triggerKey} が押され、オブジェクトを生成しました。");
     }
 }
