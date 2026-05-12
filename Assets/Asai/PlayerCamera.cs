@@ -27,6 +27,10 @@ public class PlayerCamera : MonoBehaviour
 
     [SerializeField] float BaseSensi;
 
+    [Header("壁貫通防止")]
+    [SerializeField] LayerMask whatIsWall; 
+    [SerializeField] float sphereRadius = 0.3f; 
+    [SerializeField] float wallOffset = 0.2f; 
 
     // Start is called before the first frame update
     void Start()
@@ -40,20 +44,49 @@ public class PlayerCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         xViewpointControl += Input.GetAxisRaw("Mouse X") * mouseSetSensiX;
         yViewpointControl -= Input.GetAxisRaw("Mouse Y") * mouseSetSensiY;
 
         yViewpointControl = Mathf.Clamp(yViewpointControl, minY, maxY);
 
+        /*
         Quaternion rotation = Quaternion.Euler(yViewpointControl, xViewpointControl, 0);
         Vector3 offset = rotation * new Vector3(0, 0, -disatans);
         Vector3 desiredPosiotion = target.position + Vector3.up * height + offset;
+        */
 
-        transform.position = desiredPosiotion;
-        transform.LookAt(target.position + Vector3.up * height);
+        Quaternion rotation = Quaternion.Euler(yViewpointControl, xViewpointControl, 0); 
 
+        Vector3 offset = rotation * new Vector3(0, 0, -disatans); 
+
+        Vector3 targetPos = target.position + Vector3.up * height; 
+
+        Vector3 desiredPosition = targetPos + offset; 
+
+        Vector3 direction = desiredPosition - targetPos; 
+
+        Vector3 finalPosition = desiredPosition; 
+
+        Debug.DrawLine(targetPos, desiredPosition, Color.red); 
+
+        // 壁判定
+        if (Physics.SphereCast( 
+            targetPos, 
+            sphereRadius, 
+            direction.normalized, 
+            out RaycastHit hit, 
+            direction.magnitude, 
+            whatIsWall)) 
+        { 
+            Debug.Log("壁に当たった");
+            finalPosition = hit.point - direction.normalized * wallOffset;
+        } 
+
+        transform.position = finalPosition;
+
+        transform.rotation = rotation;
         orientation.rotation = Quaternion.Euler(0, xViewpointControl, 0);
     }
 
