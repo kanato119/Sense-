@@ -35,28 +35,28 @@ public class TimeManager : MonoBehaviour
 
         }
 
-        //if (Instance != null && Instance != this)
+        /*/if (Instance != null && Instance != this)
         //{
-
+        //
         //    Destroy(gameObject);
         //    return;
-
+        //
         //}
-
-
+        //
+        //
         // ベストタイムを画面に表示する
         // DisplayBestTime();
-
+        //
         // インスタンスを登録
         //Instance = this;
-
+        //
         //DontDestroyOnLoad(this.gameObject);
-
+        //
         //if (currentTimeText == null)
         //{
         //    currentTimeText=GetComponent<TextMeshProUGUI>();
-
-        //}
+        //
+        /}*/
 
         GameObject obj = GameObject.Find("Time");
 
@@ -80,7 +80,7 @@ public class TimeManager : MonoBehaviour
     {
 
         GameObject currentObj =
-    GameObject.Find("Time");
+        GameObject.Find("Time");
 
         if (currentObj != null)
         {
@@ -89,6 +89,8 @@ public class TimeManager : MonoBehaviour
 
             Debug.Log(currentTimeText);
         }
+
+
 
         //Debug.Log(currentObj);
 
@@ -110,7 +112,24 @@ public class TimeManager : MonoBehaviour
             DisplayBestTime();
         }
 
-        //currentTimeText =
+        if (scene.name.StartsWith("Stage"))
+        {
+
+            currentTime = 0f;
+            resultTime = 0f;
+            isTimer = true;
+
+            if (currentTimeText != null)
+            {
+                currentTimeText.text = "Time : 0.00s";
+            }
+        }
+        else
+        {
+            isTimer = false;
+        }
+
+        /*/currentTimeText =
         //    GameObject.Find("Time")
         //    .GetComponentInChildren<TextMeshProUGUI>();
 
@@ -118,13 +137,11 @@ public class TimeManager : MonoBehaviour
         //   GameObject.Find("BestTime")
         //   .GetComponentInChildren<TextMeshProUGUI>();
 
-        //DisplayBestTime();
+        //DisplayBestTime();*/
     }
     // Update is called once per frame
     void Update()
     {
-
-        
 
 
         // タイマーを進める
@@ -158,7 +175,7 @@ public class TimeManager : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
+    /*/private void OnTriggerEnter(Collider other)
     //{
 
     //    if (other.CompareTag("Player"))
@@ -170,7 +187,7 @@ public class TimeManager : MonoBehaviour
 
     //    }
 
-    //}
+    //}*/
 
     
 
