@@ -14,7 +14,7 @@ public class Result : MonoBehaviour
     void Start()
     {
 
-        TimeManager.Instance.SaveTime();
+       //TimeManager.Instance.SaveTime();
 
 
 

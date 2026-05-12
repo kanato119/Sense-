@@ -19,7 +19,11 @@ public class StartWarp : MonoBehaviour
         // 指定キーが押された瞬間に実行
         if (Input.GetKeyDown(triggerKey))
         {
-            SpawnObject();
+        Vector3 position = spawnPoint != null ? spawnPoint.position : transform.position;
+            //SpawnObject();
+
+
+            //Destroy(this.prefab);
         }
     }
 
@@ -33,10 +37,9 @@ public class StartWarp : MonoBehaviour
         }
 
         // 生成位置が未設定なら自分の位置を使う
-        Vector3 position = spawnPoint != null ? spawnPoint.position : transform.position;
         Quaternion rotation = spawnPoint != null ? spawnPoint.rotation : Quaternion.identity;
 
-        Instantiate(prefab, position, rotation);
+      //  Instantiate(prefab, position, rotation);
         Debug.Log($"{triggerKey} が押され、オブジェクトを生成しました。");
     }
 }
