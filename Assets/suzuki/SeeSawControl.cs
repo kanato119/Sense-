@@ -3,9 +3,9 @@ using UnityEngine;
 public class rotateBlock : MonoBehaviour
 {
 
-    [SerializeField] public float maxAngle = 45.0f;
+    float maxAngle = 25.0f;
     private Rigidbody _rigidBody;
-
+    private Vector3 initPos;
 
 
     [SerializeField] float ResetAngleTime;
@@ -22,15 +22,24 @@ public class rotateBlock : MonoBehaviour
         _Time = ResetAngleTime;
 
         ExitPlayer = false;
-
+        initPos=transform.position;
     }
 
     void FixedUpdate()
     {
 
+        Vector3 rotation = gameObject.transform.localEulerAngles;
+        rotation.y = 0;
+        rotation.x = 0;
+        //rotation.z = Mathf.Clamp(rotation.z, -maxAngle, maxAngle);
+        //if (rotation.z < -maxAngle) rotation.z = -maxAngle;
+        //if (rotation.z > maxAngle) rotation.z = maxAngle;
+        //gameObject.transform.localEulerAngles = ;
+        _rigidBody.MoveRotation(Quaternion.Euler(rotation.x, rotation.y, rotation.z));
+
         // Z軸の角度を取得
         float z = transform.localEulerAngles.z;
-
+        _rigidBody.MovePosition(initPos);
 
         
             // 角度を正規化 -180.0～180.0の範囲内に収まるように
