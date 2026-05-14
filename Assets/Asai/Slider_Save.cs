@@ -49,8 +49,6 @@ public class Slider_Save : MonoBehaviour
 
         });
 
-        //slider.onValueChanged.AddListener(SliderChange);
-
         player.SetSensi(slider.value);
 
 
@@ -66,10 +64,5 @@ public class Slider_Save : MonoBehaviour
     {
         PlayerPrefs.SetFloat(sliderKey, value);
         PlayerPrefs.Save();
-    }
-
-    void SliderChange(float value)
-    {
-        player.SetSensi(value);
     }
 }

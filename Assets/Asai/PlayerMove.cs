@@ -94,27 +94,6 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 orijin = transform.position;
 
-        //Vector3 boxHalfExtents = new Vector3(1f, 0.1f, 1f);
-        /*
-
-        grounded = Physics.BoxCast(
-            transform.position, 
-            boxHalfExtents, 
-            Vector3.down, 
-            out hit, 
-            transform.rotation, 
-            rayDistance);
-
-        //Rayを下に伸ばして地面かどうか判断する
-        bool center = Physics.Raycast(orijin, Vector3.down, rayDistance);
-        bool left = Physics.Raycast(orijin + Vector3.left, Vector3.down, rayDistance);
-        bool right = Physics.Raycast(orijin + Vector3.right, Vector3.down, rayDistance);
-        bool back = Physics.Raycast(orijin + Vector3.back, Vector3.down, rayDistance);
-        bool Front = Physics.Raycast(orijin + Vector3.forward, Vector3.down, rayDistance);
-
-        grounded = center || left || right || back || Front;
-
-        */
         //入力取得
         MyInput();
 
@@ -157,27 +136,6 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = airDrag;
         }
 
-        /*
-        Debug.DrawRay(orijin, Vector3.down * rayDistance, Color.red);
-
-        Debug.DrawRay(orijin + Vector3.left, Vector3.down * rayDistance, Color.red);
-
-        Debug.DrawRay(orijin + Vector3.right, Vector3.down * rayDistance, Color.red);
-
-        Debug.DrawRay(orijin + Vector3.forward, Vector3.down * rayDistance, Color.red);
-
-        Debug.DrawRay(orijin + Vector3.back, Vector3.down * rayDistance, Color.red);
-
-        Vector3 boxStart = transform.position;
-
-        Vector3 boxEnd = transform.position + Vector3.down * rayDistance;
-
-        DrawBox(boxStart, boxHalfExtents, Color.green);
-
-        DrawBox(boxEnd, boxHalfExtents, Color.blue);
-        */
-
-        //Debug.Log(grounded);
     }
 
     private void FixedUpdate()
@@ -193,8 +151,6 @@ public class PlayerMovement : MonoBehaviour
         //キーを離したら空中にいる時間を短くする
         else if(rb. velocity.y > 0 &&!Input.GetKeyDown(jumpKey))
         {
-            //rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f,rb.velocity.z); 
-
             rb.AddForce(Vector3.up * Physics.gravity.y * (fallMutipler - 1), ForceMode.Acceleration);
         }
         
@@ -246,24 +202,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
         }
 
-   
-        /*
-        //地面に触れいる時だけ移動できる
-        if (grounded)
-        {
-            //入力がある時進む
-            if (moveDirection.magnitude > 0)
-            {
-                //力を入れて進む
-                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            }
-            else
-            {
-                // 入力が無いときはピタッと止める
-                rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
-            }
-        }
-        */
     }
 
     private void SpeedControl()
@@ -312,15 +250,6 @@ public class PlayerMovement : MonoBehaviour
 
             Debug.Log("JIJIJIJIJIJIJIJI");
 
-            // pMoveLift.TileVector();
-
-            //rb.AddForce(pMoveLift.TileOnPlayerMove(Collision collision) / Time.fixedDeltaTime, ForceMode.VelocityChange);
-
-            //transform.position += collision.transform.position;
-
-            // rb.velocity += transform.position;
-
-
             GameObject obj = collision.gameObject;
             
             MoveLift lift = obj.GetComponent<MoveLift>();
@@ -333,40 +262,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*
-    void DrawBox(Vector3 center, Vector3 halfExtents, Color color)
-    {
-        Vector3[] points = new Vector3[8];
-
-        // 上面
-        points[0] = center + new Vector3(-halfExtents.x, halfExtents.y, -halfExtents.z);
-        points[1] = center + new Vector3(halfExtents.x, halfExtents.y, -halfExtents.z);
-        points[2] = center + new Vector3(halfExtents.x, halfExtents.y, halfExtents.z);
-        points[3] = center + new Vector3(-halfExtents.x, halfExtents.y, halfExtents.z);
-
-        // 下面
-        points[4] = center + new Vector3(-halfExtents.x, -halfExtents.y, -halfExtents.z);
-        points[5] = center + new Vector3(halfExtents.x, -halfExtents.y, -halfExtents.z);
-        points[6] = center + new Vector3(halfExtents.x, -halfExtents.y, halfExtents.z);
-        points[7] = center + new Vector3(-halfExtents.x, -halfExtents.y, halfExtents.z);
-
-        // 上面
-        Debug.DrawLine(points[0], points[1], color);
-        Debug.DrawLine(points[1], points[2], color);
-        Debug.DrawLine(points[2], points[3], color);
-        Debug.DrawLine(points[3], points[0], color);
-
-        // 下面
-        Debug.DrawLine(points[4], points[5], color);
-        Debug.DrawLine(points[5], points[6], color);
-        Debug.DrawLine(points[6], points[7], color);
-        Debug.DrawLine(points[7], points[4], color);
-
-        // 縦
-        Debug.DrawLine(points[0], points[4], color);
-        Debug.DrawLine(points[1], points[5], color);
-        Debug.DrawLine(points[2], points[6], color);
-        Debug.DrawLine(points[3], points[7], color);
-    }
-    */
 }
