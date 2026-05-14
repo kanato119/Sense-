@@ -36,7 +36,6 @@ public class Clear : MonoBehaviour
    private void Goal()
     {
 
-
         // カーソルの非表示
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,8 +43,6 @@ public class Clear : MonoBehaviour
         PlayerPrefs.SetInt("StageIndex", StageNumber);
         TimeManager.Instance.StopTimer();
         SceneManager.LoadScene("ResultScene");
-       // Time.timeScale = 0f;
-
-
+ 
     }
 }

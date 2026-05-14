@@ -61,8 +61,6 @@ public class StageSelect : MonoBehaviour
     void Update()
     {
 
-   
-
     }
 
     // ゲームを終了させる
