@@ -22,18 +22,6 @@ public class Result : MonoBehaviour
 
     }
 
-    //void SaveResult()
-    //{
-
-    //    List<float> times = new List<float>();
-
-    //    for (int i = 0; i < RANK_COUNT; i++)
-    //    {
-
-    //    }
-
-    //}
-
 
     void DisplayRanking()
     {
@@ -50,8 +38,6 @@ public class Result : MonoBehaviour
 
             Debug.Log(stage);
 
-            // time = TimeManager.Instance.SaveTime();
-
             if (time == Mathf.Infinity)
             {
 
@@ -64,11 +50,10 @@ public class Result : MonoBehaviour
                 rankTexts[i].text = (i + 1) + "  : " + time.ToString("F2") + "s";
 
             }
+
         }
 
-
     }
-    
 
     public void OnClickReset()
     {
@@ -115,5 +100,6 @@ public class Result : MonoBehaviour
         return stage;
 
     }
+
 }
 
