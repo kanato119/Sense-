@@ -2574,6 +2574,10 @@ PrefabInstance:
       value: Door (1)
       objectReference: {fileID: 0}
     - target: {fileID: 9123102684845808498, guid: 24ff22dd187245242a4330bcbf9a5bbe, type: 3}
+      propertyPath: consumeKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123102684845808498, guid: 24ff22dd187245242a4330bcbf9a5bbe, type: 3}
       propertyPath: openDoorSE
       value: 
       objectReference: {fileID: 8300000, guid: a002d12811a7e5b4996cfec367b8b9de, type: 3}
@@ -2648,6 +2652,10 @@ PrefabInstance:
       propertyPath: Key
       value: 
       objectReference: {fileID: 95461667}
+    - target: {fileID: 9123102684845808498, guid: 24ff22dd187245242a4330bcbf9a5bbe, type: 3}
+      propertyPath: consumeKey
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9123102684845808498, guid: 24ff22dd187245242a4330bcbf9a5bbe, type: 3}
       propertyPath: openDoorSE
       value: 
