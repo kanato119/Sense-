@@ -19,17 +19,15 @@ public class PouseManager : MonoBehaviour
 
 
         // Start is called before the first frame update
-        void Start()
+    void Start()
     {
-
-
-
-
     }
 
     private void OnEnable()
     {
+
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
 
@@ -72,8 +70,6 @@ public class PouseManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        // CameraObject.SetActive(false);
-
         CameraController.enabled = false;
 
         Debug.Log("ポーズ");
@@ -90,9 +86,6 @@ public class PouseManager : MonoBehaviour
         // カーソルの非表示
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-
-        //CameraObject.SetActive(true);
 
         CameraController.enabled = true;
 
@@ -113,18 +106,6 @@ public class PouseManager : MonoBehaviour
             }
 
         }
-
-        //// スペースを押したらタイトル画面に戻る(仮)
-        //if (isPaused&&Input.GetKeyDown(KeyCode.Space))
-        //{
-
-        //    ChangeSceneStart changescene = GetComponent<ChangeSceneStart>();
-
-        //    changescene.ChengeScene2();
-
-        //}
-
-        //Debug.Log(Time.timeScale);
 
     }
 }

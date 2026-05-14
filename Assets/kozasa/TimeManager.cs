@@ -14,23 +14,24 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI bestTimeText;    // ベストタイム表示UI
     public static TimeManager Instance {  get; private set; }
 
-
     // Start is called before the first frame update
     void Awake()
     {
 
+        // まだInstanceが存在しない場合
         if (Instance == null)
         {
 
+            // 登録
             Instance = this;
 
+            // シーンを切り替えても消えないようにする
             DontDestroyOnLoad(gameObject);
-
-
 
         }
         else {
 
+            // すでに存在していたら重複しないようにする
             Destroy(gameObject);
 
         }
@@ -58,8 +59,10 @@ public class TimeManager : MonoBehaviour
         //
         /}*/
 
+        // "Time"という名前のオブジェクトを探す
         GameObject obj = GameObject.Find("Time");
 
+        // 見つかったか確認
         Debug.Log(obj);
 
 
@@ -67,46 +70,59 @@ public class TimeManager : MonoBehaviour
 
     private void OnEnable()
     {
+
+        // シーン読み込み
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
 
     private void OnDisable()
     {
+
+        // イベント解除
         SceneManager.sceneLoaded -= OnSceneLoaded;
+
     }
 
+    // シーン読み込み後に呼ぶ
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
+        // "Time"オブジェクトを取得
         GameObject currentObj =
         GameObject.Find("Time");
 
+        // 見つかったら
         if (currentObj != null)
         {
+
+            // 子オブジェクトのTextMeshProUGUIを取得
             currentTimeText =
                 currentObj.GetComponentInChildren<TextMeshProUGUI>();
 
+
             Debug.Log(currentTimeText);
+
         }
 
-
-
-        //Debug.Log(currentObj);
-
-        // Debug.Log(currentObj.GetComponentInChildren<TextMeshProUGUI>());
-
+        // "BestTime"オブジェクト取得
         GameObject BestObj =
         GameObject.Find("BestTime");
 
+        // 見つかったら
         if (BestObj != null)
         {
+
+            // 子オブジェクトのTextMeshProUGUIを取得
             bestTimeText =
                 BestObj.GetComponentInChildren<TextMeshProUGUI>();
+
 
             Debug.Log(currentTimeText);
         }
 
+        // 見つかったら
         if (bestTimeText != null)
         {
             DisplayBestTime();
@@ -115,41 +131,43 @@ public class TimeManager : MonoBehaviour
         if (scene.name.StartsWith("Stage"))
         {
 
+            // タイマー初期化
             currentTime = 0f;
             resultTime = 0f;
+
+            // タイマー開始
             isTimer = true;
 
+            // UIが存在するなら表示リセット
             if (currentTimeText != null)
             {
+
                 currentTimeText.text = "Time : 0.00s";
+
             }
         }
         else
         {
+
+            // ステージ以外ではタイマー停止
             isTimer = false;
+
         }
 
-        /*/currentTimeText =
-        //    GameObject.Find("Time")
-        //    .GetComponentInChildren<TextMeshProUGUI>();
-
-        //bestTimeText =
-        //   GameObject.Find("BestTime")
-        //   .GetComponentInChildren<TextMeshProUGUI>();
-
-        //DisplayBestTime();*/
     }
+
     // Update is called once per frame
     void Update()
     {
 
-
-        // タイマーを進める
+        // タイマーが動いている場合
         if (isTimer)
         {
 
+            // 経過時間を加算
             currentTime += Time.deltaTime;
-            
+
+            // UI更新
             currentTimeText.text = "Time : " + currentTime.ToString("F2") + "s";
 
         }
@@ -170,26 +188,11 @@ public class TimeManager : MonoBehaviour
 
         Debug.Log(resultTime);
 
+        // ランキングとタイムの保存
         SaveTime();
         SaveRanking();
 
     }
-
-    /*/private void OnTriggerEnter(Collider other)
-    //{
-
-    //    if (other.CompareTag("Player"))
-    //    {
-
-    //        Debug.Log("Goal");
-
-    //        StopTimer();
-
-    //    }
-
-    //}*/
-
-    
 
 public float SaveTime()
     {
@@ -205,7 +208,6 @@ public float SaveTime()
 
         DisplayBestTime();
 
-
         return bestTime;
     }
 
@@ -213,6 +215,7 @@ public float SaveTime()
     {
         // 画面に表示
 
+        // UIが存在しない場合
         if (bestTimeText == null)
         {
             Debug.Log("bestTimeText が null");
@@ -231,22 +234,17 @@ public float SaveTime()
     void SaveRanking()
     {
 
+        // 現在のステージ番号取得
         int stage = PlayerPrefs.GetInt("StageIndex", 1);
 
         List<float>ranking=new List<float>();
-
-           // TextMeshProUGUI currentTime = GameObject.Find("CurrentTime").GetComponent<TextMeshProUGUI>();
-
-           // TextMeshProUGUI bestTime = GameObject.Find("BestTime").GetComponent<TextMeshProUGUI>();
-
-
-
 
         for (int i = 0; i < 5; i++)
         {
 
             float time = PlayerPrefs.GetFloat("Stage" + stage + "_Rank" + i, Mathf.Infinity);
             ranking.Add(time);
+
         }
 
         // 今回のタイム追加
@@ -265,7 +263,6 @@ public float SaveTime()
         }
 
         Debug.Log(stage);
-
 
         PlayerPrefs.Save();
 
