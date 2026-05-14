@@ -21,6 +21,7 @@ public class StageSelect : MonoBehaviour
 
         isStageSelect=true;
         isCheck = false;
+        // パネルを開く
         StageSelectUI.SetActive(true);
 
         Cursor.visible = true;
@@ -32,7 +33,7 @@ public class StageSelect : MonoBehaviour
     {
 
         isStageSelect = false;
-       
+       // パネルを閉じる
         StageSelectUI.SetActive(false);
 
         Debug.Log("false");
@@ -60,8 +61,6 @@ public class StageSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-   
 
     }
 
