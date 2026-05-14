@@ -1577,6 +1577,7 @@ MonoBehaviour:
   groundDrag: 9
   airDrag: 0.1
   playerHeight: 0.5
+  JumpSE: {fileID: 0}
   grounded: 1
   orientation: {fileID: 980490232}
   pMoveLift: {fileID: 0}
@@ -3931,6 +3932,12 @@ MonoBehaviour:
   maxY: 89
   xViewpointControl: -502.40067
   yViewpointControl: -7.999996
+  BaseSensi: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  sphereRadius: 0.3
+  wallOffset: 0.2
 --- !u!81 &1165809215
 AudioListener:
   m_ObjectHideFlags: 0
