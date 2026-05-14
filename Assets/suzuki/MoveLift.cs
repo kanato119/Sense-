@@ -44,8 +44,6 @@ public class MoveLift : MonoBehaviour
         //移動量の計算（今の座標から前の座標を引いて出す）
         Vector3 CurrenTile = transform.position - PastTile;
         Movement = transform.position - PastTile;
-
-        Debug.Log(Movement);
         
         //リフトが通ったら次のポイントに向かうようにする
         //誤差を許容

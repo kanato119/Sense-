@@ -26,9 +26,13 @@ public class Climing : MonoBehaviour
     [SerializeField] KeyCode Climb = KeyCode.Space;
 
 
-
+    [Header("クライミング時間")]
     [SerializeField] float climbDuration = 0.5f;
+
+    [Header("登る高さ")]
     [SerializeField] float climbHeightOffset = 1.5f;
+
+    [Header("上った前に行く距離")]
     [SerializeField] float climbForwardOffset = 0.5f;
 
     [Header("SphereCastの高さを変える")]
@@ -43,6 +47,8 @@ public class Climing : MonoBehaviour
 
     //上っているかどうか
     private bool climbing;
+
+    private bool canClimb;
 
     void Start()
     {
@@ -59,7 +65,12 @@ public class Climing : MonoBehaviour
         //壁の検出
         WallCheck();
 
-        if(wallFront && Input.GetKeyDown(Climb) && wallLookAngle < maxWallLookAngle)
+        if(pm.grounded)
+        {
+            canClimb = true;
+        }
+
+        if(wallFront && canClimb && Input.GetKeyDown(Climb) && wallLookAngle < maxWallLookAngle)
         {
             bool spaceAbove = !Physics.Raycast(transform.position + Vector3.up * climbHeightOffset,
                 orientaion.forward,
@@ -68,6 +79,7 @@ public class Climing : MonoBehaviour
 
             if(spaceAbove)
             {
+                canClimb = false;
                 StartCoroutine(ClimbLedge());
             }
         }
@@ -75,25 +87,6 @@ public class Climing : MonoBehaviour
         Debug.Log(wallFront);
     }
 
-    /*
-    private void StateMachine()
-    {
-        if(wallFront && Input.GetKey(KeyCode.E) && wallLookAngle < maxWallLookAngle)
-        {
-            if (!climbing && climbTimer > 0) StartClimbing();
-
-            if (climbTimer > 0) climbTimer -= Time.deltaTime;
-            if (climbTimer < 0) StopClimbing();
-        }
-
-        else
-        {
-            if(climbing)StopClimbing();
-
-            
-        }
-    }
-    */
     
     private void WallCheck()
     {
@@ -102,17 +95,6 @@ public class Climing : MonoBehaviour
         RaycastHit hit;
 
         wallFront = false;
-
-        /*
-        wallFront = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
-        if(wallFront)
-        {
-            wallLookAngle = Vector3.Angle(orientaion.forward, -frontWallHit.normal);
-        }
-
-        */
-        //bool rayHit = Physics.Raycast(origin, orientaion.forward, out frontWallHit,detectionLength, whatIsWall);
-        //bool sphereHit = Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out frontWallHit, detectionLength, whatIsWall);
 
         if(Physics.SphereCast(origin, sphereCastRadius, orientaion.forward, out hit, detectionLength, whatIsWall))
         {
@@ -186,7 +168,7 @@ public class Climing : MonoBehaviour
             yield return null;
         }
 
-        transform.position = forwarPos;
+        transform.position = forwarPos + Vector3.down * 0.1f;
 
         rb.isKinematic = false;
 
@@ -196,34 +178,6 @@ public class Climing : MonoBehaviour
 
         climbing = false;
     }
-
-/*
-    private void StartClimbing()
-    {
-        climbing = true;
-
-        animator.SetBool("Climing", true);
-
-        //Camera fov change
-    }
-    private void ClimbingMovement()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
-
-        //Sound effect
-    }
-
-    private void StopClimbing()
-    {
-        climbing = false;
-
-        animator.SetBool("Climing", false);
-
-        //particle effect
-    }
-
-    */
-
 
     private void OnDrawGizmos()
     {

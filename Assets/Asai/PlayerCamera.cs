@@ -51,12 +51,6 @@ public class PlayerCamera : MonoBehaviour
 
         yViewpointControl = Mathf.Clamp(yViewpointControl, minY, maxY);
 
-        /*
-        Quaternion rotation = Quaternion.Euler(yViewpointControl, xViewpointControl, 0);
-        Vector3 offset = rotation * new Vector3(0, 0, -disatans);
-        Vector3 desiredPosiotion = target.position + Vector3.up * height + offset;
-        */
-
         Quaternion rotation = Quaternion.Euler(yViewpointControl, xViewpointControl, 0); 
 
         Vector3 offset = rotation * new Vector3(0, 0, -disatans); 

@@ -9,12 +9,11 @@ public class FallTile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         rb.useGravity = false;
     }
     void Update()
     {
-            //何かが触れたらタイマーが作動する　
+            //何かが触れたらタイマーが作動する
         if (hoge)
         {
             timer -= Time.deltaTime;
@@ -28,6 +27,7 @@ public class FallTile : MonoBehaviour
             }
             else
             {
+                //なにも動かさない
                 rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
             }
         }
