@@ -5,32 +5,25 @@ using UnityEngine;
 public class Pixar : MonoBehaviour
 {
 
-   [SerializeField] GameObject objects;
+    [SerializeField] GameObject objects;
 
     [SerializeField] int Num;
 
-        private bool hoge;
+    private bool hoge;
 
     private void Start()
     {
-
-        //  Vector3 Posi = objects.transform.position;
-
-
         Num = 0;
-
 
         hoge = false;
     }
 
     private void Update()
     {
-        
-        if(Num >= 4)
+
+        if (Num >= 4)
         {
-
-           objects.AddComponent<Rigidbody>();
-
+            objects.AddComponent<Rigidbody>();
         }
 
     }
@@ -41,7 +34,7 @@ public class Pixar : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-
+            //プレイヤーが一定回数触れたら落ちる
             if (hoge) return;
 
             hoge = true;
@@ -49,20 +42,8 @@ public class Pixar : MonoBehaviour
             objects.transform.position += Vector3.down * 10 * Time.deltaTime;
 
             Num++;
-           
 
             hoge = false;
-
         }
-        
     }
-
-    void ConstNum()
-    {
-
-
-
-    }
- 
-
 }
