@@ -5,18 +5,16 @@ using UnityEngine;
 
 public class ArrowBox : MonoBehaviour
 {
-
+    //球を発射するための座標
     [SerializeField] Transform BuletPosition;
+   //球自体のオブジェクト
     [SerializeField] GameObject Bulet;
 
     //球の発射レート
     [SerializeField] float BuletLate;
+    float Num;
   
     [SerializeField] float Speed;
-
-    float Num;
-
-
     [SerializeField] Vector3 Direction;
 
     [SerializeField] AudioClip audioClip;
@@ -32,6 +30,7 @@ public class ArrowBox : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+        //音量を半分にする
         audioSource.volume = 0.5f;
       
     }
@@ -39,7 +38,6 @@ public class ArrowBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 
         Num -= Time.deltaTime;
 
@@ -66,9 +64,6 @@ public class ArrowBox : MonoBehaviour
             Num = BuletLate;
 
         }
-
-
      }
-   
     }
 
