@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StartWarp : MonoBehaviour
 {
-    [Header("生成するプレハブ")]
-    public GameObject prefab;
+    [Header("ワープさせたいもの")]
+    public GameObject Warptarget;
 
-    [Header("生成位置")]
-    public Transform spawnPoint;
+    [Header("ワープ先")]
+    public Transform warpPoint;
 
     [Header("押すキー")]
     public KeyCode triggerKey = KeyCode.Z;
@@ -19,27 +19,33 @@ public class StartWarp : MonoBehaviour
         // 指定キーが押された瞬間に実行
         if (Input.GetKeyDown(triggerKey))
         {
-        Vector3 position = spawnPoint != null ? spawnPoint.position : transform.position;
-            //SpawnObject();
+         
+            SpawnObject();
 
 
-            //Destroy(this.prefab);
         }
     }
 
 
     void SpawnObject()
     {
-        if (prefab == null)
+        // ワープさせるものを設定されていない時
+        if (Warptarget == null)
         {
-            Debug.LogWarning("Prefab が設定されていません。");
+           
             return;
         }
 
-        // 生成位置が未設定なら自分の位置を使う
-        Quaternion rotation = spawnPoint != null ? spawnPoint.rotation : Quaternion.identity;
+        // ワープ先が設定されていない時
+        if (warpPoint == null)
+        {
+            
+            return;
+        }
 
-      //Instantiate(prefab, position, rotation);
-        Debug.Log($"{triggerKey} が押され、オブジェクトを生成しました。");
+        // 位置を移動
+        Warptarget.transform.position = warpPoint.position;
+
+       
     }
 }
