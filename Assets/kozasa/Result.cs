@@ -16,8 +16,6 @@ public class Result : MonoBehaviour
 
        //TimeManager.Instance.SaveTime();
 
-
-
         DisplayRanking();
 
     }
@@ -30,7 +28,6 @@ public class Result : MonoBehaviour
 
         for (int i = 0; i < RANK_COUNT; i++)
         {
-           
 
             float time = PlayerPrefs.GetFloat("Stage" + stage + "_Rank" + i, Mathf.Infinity);
 
@@ -77,6 +74,7 @@ public class Result : MonoBehaviour
 
     }
 
+    // ステージ数を取得する
     int GetStageNumber()
     {
 

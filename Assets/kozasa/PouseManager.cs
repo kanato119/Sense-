@@ -12,7 +12,7 @@ public class PouseManager : MonoBehaviour
     [SerializeField]public GameObject pauseMenuUI;
     [SerializeField] private MonoBehaviour CameraController;
 
-    public static TimeManager Instance { get; private set; }
+    //public static TimeManager Instance { get; private set; }
 
     // [SerializeField] GameObject CameraObject;
     private bool isPaused = false;
