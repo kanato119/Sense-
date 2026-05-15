@@ -262,6 +262,7 @@ public float SaveTime()
 
         }
 
+        // ステージ数を見る
         Debug.Log(stage);
 
         PlayerPrefs.Save();
