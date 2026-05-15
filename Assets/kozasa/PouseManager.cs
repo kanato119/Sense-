@@ -12,13 +12,9 @@ public class PouseManager : MonoBehaviour
     [SerializeField]public GameObject pauseMenuUI;
     [SerializeField] private MonoBehaviour CameraController;
 
-    public static TimeManager Instance { get; private set; }
-
-    // [SerializeField] GameObject CameraObject;
     private bool isPaused = false;
 
-
-        // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
     }
@@ -29,7 +25,6 @@ public class PouseManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
     }
-
 
     private void OnDisable()
     {
@@ -57,33 +52,38 @@ public class PouseManager : MonoBehaviour
 
     }
 
-
+    // ポーズするときの処理
     public void PauseGame()
     {
 
         Debug.Log(pauseMenuUI);
-        // パネルを表示させてゲームを止める
+        // ゲームを止める
         Time.timeScale = 0f;
         isPaused = true;
+        // パネルを表示
         pauseMenuUI.SetActive(true);
 
+        // カーソルを表示させてカーソルロックを解除する
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        // カメラの操作を停止させる
         CameraController.enabled = false;
 
         Debug.Log("ポーズ");
 
     }
 
+    // ポーズを解除するときの処理
    public void ResumeGame()
     {
-        // パネルを非表示にさせてゲームを動かす
+        // ゲームを動かす
         Time.timeScale = 1.0f;
         isPaused = false;
+    　　// パネルを非表示にさせる
         pauseMenuUI.SetActive(false);
 
-        // カーソルの非表示
+        // カーソルの非表示にしてカーソルをロックする
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -97,7 +97,7 @@ public class PouseManager : MonoBehaviour
         // ESCキーを押したらポーズ
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // ポーズでないとき
+            // ポーズでないときポーズする
             if (!isPaused)
             {
 
