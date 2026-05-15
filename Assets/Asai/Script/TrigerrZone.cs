@@ -15,6 +15,7 @@ public class TrigerrZone : MonoBehaviour
     {
     }
 
+    //地面に触れていたら
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ground") || other.CompareTag("Tile"))
@@ -24,6 +25,7 @@ public class TrigerrZone : MonoBehaviour
         }
     }
 
+    //地面に触れていなかったら
     private void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Ground") || other.CompareTag("Tile"))

@@ -18,13 +18,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("重力")]
     [SerializeField] float fallMutipler;
 
-    [Header(" ")]
+    [Header("空中での移動倍率")]
     [SerializeField] float airMultiplier;
+
+    //ジャンプ可能かどうか
     bool readyToJump = true;
 
     [Header("ダッシュスピード")]
     [SerializeField] float runSpeed;
 
+    //現在のスピード
     float currentSpeed;
 
     [Header("Keybinds")]
@@ -39,11 +42,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rayの長さ")]
     [SerializeField] float playerHeight;
 
+    [Header("ジャンプSE")]
     [SerializeField] AudioClip JumpSE;
 
     //地面に触れいるかどうか
     public bool grounded;
 
+    //前フレームで接地していたか
     private bool wasGrounded;
 
     //カメラ基準の向き
@@ -73,14 +78,19 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //AudioSource取得
         audio = GetComponent<AudioSource>();
 
+        //Rigidbody取得
         rb = GetComponent<Rigidbody>();
 
+        //Animator取得
         animator = GetComponent<Animator>();
 
+        //回転させないように
         rb.freezeRotation = true;
 
+        //初期スピード
         currentSpeed = moveSpeed;
 
         //追加（鈴木）
@@ -90,13 +100,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float rayDistance = playerHeight * 0.5f + 0.2f;
-
-        Vector3 orijin = transform.position;
-
         //入力取得
         MyInput();
 
+        //着地した瞬間にジャンプをできるようにする
         if(!wasGrounded && grounded)
         {
             readyToJump = false;
@@ -104,20 +111,29 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
 
+        //現在の接地状態を保存
         wasGrounded = grounded;
 
+        //入力されているか
         bool isInput = horizontalInput != 0 || verticalInput!=0;
+        
+        //現在のスピード切り替え
         bool isRuning = Input.GetKey(KeyCode.LeftShift);
 
+        //アニメーション制御
         currentSpeed = isRuning ? runSpeed : moveSpeed;
 
+        //アニメーション
         animator.SetBool("Run", isRuning && isInput && grounded);
         animator.SetBool("Walk",!isRuning && isInput && grounded);
 
+        //空中ならJumpアニメーションを流す
         animator.SetBool("Jump 0", !grounded);
 
+        //接地状態をAnimatorへ
         animator.SetBool("Grounded", grounded);
 
+        // Y方向速度をAnimatorへ
         animator.SetFloat("yVelocity", rb.velocity.y);
 
 
@@ -140,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //プレイヤー移動
         MovePlayer();
 
         //落下スピードを早くする
@@ -162,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal"); //AD
         verticalInput = Input.GetAxisRaw("Vertical");     //WS
 
+        //ジャンプ
         if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
             Jump();
@@ -227,15 +245,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        //上方向速度リセット
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
+        //上方向へ力を加える
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
+        //ジャンプアニメーション
         animator.SetTrigger("Jump");
 
+        //ジャンプSE再生
         audio.PlayOneShot(JumpSE);
     }
 
+    //ジャンプ可能に戻す
     private void ResetJump()
     {
         readyToJump = true;
