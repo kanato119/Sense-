@@ -13,7 +13,7 @@ public class MoveLift : MonoBehaviour
     [SerializeField] private int LiftNum = 0;
     [SerializeField] private bool OnPlayer;
   
-    Vector3 Movement;
+    [SerializeField] private Vector3 Movement;
 
     GameObject PlayerSaveForce;
     Rigidbody PlayerOnTileForce;
