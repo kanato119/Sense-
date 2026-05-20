@@ -27,9 +27,9 @@ public class KeyDoor : MonoBehaviour
 
     [Header("SE")]
     public AudioClip openDoorSE;   // ドアを開けた時のSE
-    [Range(0f, 1f)] public float seVolume = 1.0f;
+    [Range(0f, 1f)] public float seVolume = 1.0f;   //SEの音量
 
-    [SerializeField] GameObject Key;
+    [SerializeField] GameObject Key; 
 
     private bool isPlayerInside = false;
     private bool isOpen = false;
@@ -84,6 +84,9 @@ public class KeyDoor : MonoBehaviour
 
         if (isOpen)
         {
+
+           
+
             leftDoor.localRotation = Quaternion.Slerp(
                 leftDoor.localRotation,
                 leftOpenRotation,
@@ -116,6 +119,7 @@ public class KeyDoor : MonoBehaviour
     {
         if (hasOpenedOnce)
         {
+            
             return;
         }
 
