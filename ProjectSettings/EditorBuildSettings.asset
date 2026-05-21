@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/GameData/StartScene  2.unity
     guid: 3c631fcdd2013c2468c235ddc811d8fc
   - enabled: 1
-    path: Assets/kozasa/StartScene.unity
+    path: Assets/kozasa/Scene/StartScene.unity
     guid: 11a1390bc381f80439045c680e0eb465
   - enabled: 1
-    path: Assets/kozasa/Stage1.unity
+    path: Assets/kozasa/Scene/Stage1.unity
     guid: f6449e23f0290cd4ea9a8596d7c79c90
   - enabled: 1
-    path: Assets/kozasa/ResultScene.unity
+    path: Assets/kozasa/Scene/ResultScene.unity
     guid: 8a7e1e6eb1c12974588a0183cd629585
   - enabled: 0
     path: Assets/GameData/StartScene.unity
@@ -24,10 +24,10 @@ EditorBuildSettings:
     path: Assets/GameData/Stage1.unity
     guid: e830bdbc60f3bab4d8c02c065a3f07bf
   - enabled: 0
-    path: Assets/kozasa/LoadingScene.unity
+    path: Assets/kozasa/Scene/LoadingScene.unity
     guid: 1dc71232adfee3f4faae310c37611056
   - enabled: 0
-    path: Assets/kozasa/GameScene.unity
+    path: Assets/kozasa/Scene/GameScene.unity
     guid: 4e1cf8660b7fb8845b4e3668ba9da1b4
   - enabled: 0
     path: Assets/GameData/reisyou.unity
