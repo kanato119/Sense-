@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 0.1f;
     public Vector3 direction = new Vector3(-1, -1, 0);
 
     private Transform startPoint;
@@ -23,13 +23,13 @@ public class Meteor : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             if (startPoint != null)
             {
-                collision.transform.position = startPoint.position;
+                other.transform.position = startPoint.position;
             }
         }
 
