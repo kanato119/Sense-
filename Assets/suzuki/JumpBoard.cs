@@ -6,9 +6,7 @@ using UnityEngine;
 public class JumpBoard : MonoBehaviour
 {
     //ジャンプの強さと方向
-    [SerializeField] private float jumpBoardFoceX = 0.0f;
-    [SerializeField] private float jumpBoardFoceY = 30.0f;
-    [SerializeField] private float jumpBoardFoceZ = 0.0f;
+    [SerializeField] private Vector3 jumpBoardFoce =  new Vector3(0.0f, 30.0f, 0.0f );
     
     [SerializeField]AudioClip jumpBoardSound;
     private AudioSource audioSource;
@@ -28,7 +26,7 @@ public class JumpBoard : MonoBehaviour
         //プレイヤーが触れたら飛ばす
         if (other.gameObject.CompareTag("Player"))
         {
-            rb.velocity = new Vector3(jumpBoardFoceX, jumpBoardFoceY, jumpBoardFoceZ);
+            rb.velocity = jumpBoardFoce;
         }
     }
 }
