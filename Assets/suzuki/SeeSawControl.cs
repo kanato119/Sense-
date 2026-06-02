@@ -84,10 +84,6 @@ public class rotateBlock : MonoBehaviour
                     0.3f * Time.deltaTime
                 );
 
-                ////角速度 += -角度 * バネ強さ
-                ////角速度 *= 減衰率
-                ////角度 += 角速度
-
                 //傾いていた逆の方向に力を入れる
                 float torque = -z * 2f;
                 _rigidBody.AddTorque(Vector3.forward * torque);
